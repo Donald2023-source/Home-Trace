@@ -30,14 +30,18 @@ const page = () => {
             <div className="w-full flex flex-col gap-5">
               <div
                 onClick={() => handleRole("agent")}
-                className="flex p-3 bg-primary/20 hover:bg-primary/60 cursor-pointer rounded-lg items-center justify-between"
+                className={`flex p-3 bg-primary/20 hover:bg-primary/60 cursor-pointer rounded-lg items-center justify-between ${
+                  selectedRole === "agent" && "bg-primary/80 text-white"
+                }`}
               >
                 <p className=" font-semibold">Agent</p>
                 <Image className="h-5 w-5" src={user} alt="User Image" />
               </div>
               <div
                 onClick={() => handleRole("user")}
-                className="flex p-3 bg-primary/20 hover:bg-primary/60 cursor-pointer rounded-lg items-center justify-between"
+                className={`flex p-3 bg-primary/20 hover:bg-primary/60 cursor-pointer rounded-lg items-center justify-between ${
+                  selectedRole === "user" && "bg-primary/80 text-white"
+                }`}
               >
                 <p className=" font-semibold">User</p>
                 <Image className="h-5 w-5" src={user} alt="User Image" />
