@@ -39,14 +39,30 @@ const Testimonial = () => {
               <h2 className="font-semibold">{item?.name}</h2>
             </div>
             <span className="flex items-center gap-1">
-              <Image src={star} alt="star" className="w-5 inline-block" />
-              <Image src={star} alt="star" className="w-5 inline-block" />
-              <Image src={star} alt="star" className="w-5 inline-block" />
-              <Image src={star} alt="star" className="w-5 inline-block" />
+              <Image
+                src={star}
+                alt="star"
+                className="lg:w-5 md:w-3  inline-block"
+              />
+              <Image
+                src={star}
+                alt="star"
+                className="lg:w-5 md:w-3  inline-block"
+              />
+              <Image
+                src={star}
+                alt="star"
+                className="lg:w-5 md:w-3  inline-block"
+              />
+              <Image
+                src={star}
+                alt="star"
+                className="lg:w-5 md:w-3  inline-block"
+              />
             </span>
           </div>
           <div>
-            <p className="text-sm text-gray-500 w-[80%] leading-6 font-light py-1">
+            <p className="lg:text-sm md:text-xs text-xs text-gray-500 lg:w-[80%] leading-6 font-light py-1">
               {item?.text}
             </p>
             <h4 className="text-sm font-semibold"> - {item?.name}</h4>
