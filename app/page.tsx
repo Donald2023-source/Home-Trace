@@ -46,7 +46,7 @@ const page = () => {
             Explore Our{" "}
             <span className="text-primary/70">Verified Properties</span>
           </h2>
-          <div className="flex">
+          <div className="flex ">
             <ProductCard item={Products} />
           </div>
           <Link

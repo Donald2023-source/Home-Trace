@@ -33,7 +33,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className="my-4">
+    <div className="my-4 lg:px-0 px-3 md:px-4">
       <h2 className="text-xl font-bold text-primary/70">
         Frequently Asked Questions (FAQ)
       </h2>
