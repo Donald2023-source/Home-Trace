@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 // Load Roboto for body text
 const roboto = Roboto({
@@ -28,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
+      <Toaster/>
       <body
         className={`${roboto.variable} ${poppins.variable} antialiased`}
       >
