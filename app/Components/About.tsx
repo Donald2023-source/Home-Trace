@@ -18,7 +18,7 @@ const About = () => {
             text ? "" : "line-clamp-7 transition-all"
           }`}
         >
-          In a space crowded with false listings and unreliable deals, we’re
+          In a space crowded with false listings and unreliable deals, we&apos;re
           here to change the standard. Every property on HomeTrace goes through
           a rigorous and comprehensive verification process: we meticulously
           confirm its details, thoroughly inspect all relevant documents, and
@@ -28,10 +28,10 @@ const About = () => {
           property, so you can trust that what you see is exactly what you get.
           <br />
           <br />
-          Whether you're buying or renting, HomeTrace is committed to helping
+          Whether you&apos;re buying or renting, HomeTrace is committed to helping
           you move forward with complete confidence. We believe that
           transparency and trust are the foundations of every successful real
-          estate transaction. That’s why every listing you see has been
+          estate transaction. That&apos;s why every listing you see has been
           carefully checked, not just posted. With HomeTrace, you can avoid the
           uncertainty and risk that often come with property searches, knowing
           that each opportunity has been vetted for your peace of mind.
