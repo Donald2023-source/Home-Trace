@@ -63,7 +63,7 @@ const page = () => {
               </div>
             </div>
             <button
-              onClick={handleNext()}
+              onClick={() => handleNext()}
               className="py-3 px-10 w-full my-8 cursor-pointer bg-primary text-white hover:scale-95 transition rounded-lg"
             >
               Next

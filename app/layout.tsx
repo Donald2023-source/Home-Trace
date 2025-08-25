@@ -29,10 +29,8 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-      <Toaster/>
-      <body
-        className={`${roboto.variable} ${poppins.variable} antialiased`}
-      >
+      <Toaster position="top-right" />
+      <body className={`${roboto.variable} ${poppins.variable} antialiased`}>
         {children}
       </body>
     </html>
