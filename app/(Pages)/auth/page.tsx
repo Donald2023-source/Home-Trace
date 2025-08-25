@@ -18,7 +18,7 @@ const page = () => {
       <div className="md:w-[45%] h-72 md:h-screen">
         <Image className="h-full object-cover" src={img1} alt="image" />
       </div>
-      <div className="md:p-10 p-5 w-[95%] flex-1 relative md:-top-0  -top-20 bg-white rounded-xl">
+      <div className="md:p-10 p-5 w-[90%] flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
         <div className="md:w-[85%] w-[95%]">
           <Image src={logo} alt="logo" className="h-20 w-20" />
           <div>
