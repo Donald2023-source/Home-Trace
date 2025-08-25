@@ -36,7 +36,7 @@ const Why = () => {
       <div className="flex md:flex-row justify-center md:flex-wrap lg:flex-nowrap   md:px-0 px-10 flex-col items-center gap-12 md:gap-8">
         {items.map((item, idx) => (
           <div
-            className="flex flex-col items-center h-fit md:h-56 py-2 md:w-[36%] text-center rounded-xl shadow-lg px-3"
+            className="flex flex-col items-center justify-between h-fit md:h-56 py-2 md:w-[46%] text-center rounded-xl shadow-lg px-3"
             key={idx}
           >
             <Image

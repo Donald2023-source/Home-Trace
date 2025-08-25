@@ -12,7 +12,7 @@ const Hero = () => {
           <h2 className="text-center lg:w-[45%] md:w-[65%] mx-auto text-2xl md:text-3xl leading-12">
             We verify the agents. You just find your perfect home.
           </h2>
-          
+
           <p className="md:text-base text-sm py-3 text-gray-200 font-light">
             Every home is checked by us , that’s the HomeTrace standard.
           </p>
@@ -31,6 +31,5 @@ const Hero = () => {
     </div>
   );
 };
-
 
 export default Hero;
