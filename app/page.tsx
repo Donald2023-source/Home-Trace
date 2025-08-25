@@ -42,7 +42,7 @@ const page = () => {
         <Why />
 
         <div className="my-20 w-full flex flex-col gap-4">
-          <h2 className="font-bold text-center md:text-left text-xl tracking-wide">
+          <h2 className="font-bold md:px-4 lg:px-0 text-center md:text-left text-xl tracking-wide">
             Explore Our{" "}
             <span className="text-primary/70">Verified Properties</span>
           </h2>
