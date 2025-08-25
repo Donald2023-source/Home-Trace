@@ -10,6 +10,7 @@ import ProductCard from "./Components/ProductCard";
 import Link from "next/link";
 import Testimonial from "./Components/Testimonial";
 import Faq from "./Components/Faq";
+import Footer from "./Components/Footer";
 const page = () => {
   const Products = [
     {
@@ -59,6 +60,7 @@ const page = () => {
         <Testimonial />
         <Faq />
       </div>
+      <Footer />
     </div>
   );
 };
