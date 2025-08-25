@@ -11,10 +11,10 @@ interface Props {
 
 const ProductCard = ({ item }: Props) => {
   return (
-    <div className="flex md:flex-row lg:flex-nowrap mx-auto md:flex-wrap flex-col md:gap-6 gap-5 md:justify-start justify-center items-center ">
+    <div className="flex md:flex-row lg:flex-nowrap mx-auto md:flex-wrap flex-col md:gap-7 gap-5 md:justify-start justify-center items-center ">
       {item?.map((item: any, idx: number) => (
         <div
-          className="w-[23rem] hover:scale-95 transition-all cursor-pointer h-[23rem] shadow-lg rounded-lg my-5"
+          className="lg:w-[23rem] md:w-[16rem] sm:w-[17rem] lg:h-[23rem] md:h-[20rem]  hover:scale-95 transition-all cursor-pointer h-[23rem] shadow-lg rounded-lg my-5"
           key={idx}
         >
           <Image
