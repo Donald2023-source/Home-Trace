@@ -14,15 +14,15 @@ const page = () => {
   };
 
   return (
-    <div className="flex items-center">
-      <div className="w-[45%] border h-screen">
-        <Image className="h-full" src={img1} alt="image" />
+    <div className="flex md:flex-row flex-col items-center">
+      <div className="md:w-[45%] h-72 md:h-screen">
+        <Image className="h-full object-cover" src={img1} alt="image" />
       </div>
-      <div className="p-10 flex-1">
-        <div className="w-[85%]">
+      <div className="md:p-10 p-5 w-[95%] flex-1 relative md:-top-0  -top-20 bg-white rounded-xl">
+        <div className="md:w-[85%] w-[95%]">
           <Image src={logo} alt="logo" className="h-20 w-20" />
           <div>
-            <h1 className="py-6 text-3xl">Welcome To Home Trace</h1>
+            <h1 className="py-6 md:text-3xl">Welcome To Home Trace</h1>
             <p className="text-gray-500 pb-4">
               Select an Option which Best Describes You
             </p>
