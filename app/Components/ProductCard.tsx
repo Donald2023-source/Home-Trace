@@ -11,7 +11,7 @@ interface Props {
 
 const ProductCard = ({ item }: Props) => {
   return (
-    <div className="flex md:flex-row mx-auto flex-col md:gap-10 gap-5 md:justify-start justify-center items-center md:flex-wrap">
+    <div className="flex md:flex-row mx-auto flex-col md:gap-5 gap-5 md:justify-start justify-center items-center ">
       {item?.map((item: any, idx: number) => (
         <div
           className="w-[24rem] hover:scale-95 transition-all cursor-pointer h-[23rem] shadow-lg rounded-lg my-5"

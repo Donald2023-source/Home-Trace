@@ -37,7 +37,7 @@ const page = () => {
       <Navbar />
       <Hero />
 
-      <div className="max-w-6xl mx-auto mt-10">
+      <div className="max-w-6xl md:px-2 lg:px-1 mx-auto mt-10">
         <About />
         <Why />
 
