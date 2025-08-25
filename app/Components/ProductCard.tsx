@@ -1,13 +1,13 @@
 import React from "react";
 
-import Image from "next/image";
-import { BadgeCheck, CreditCard, MapPin } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+import { CreditCard, MapPin } from "lucide-react";
 import verify from "@/public/material-symbols_verified.png";
 import PriceFormatter from "./PriceFormatter";
 
 interface Props {
   item: Array<{
-    img: string;
+    img: StaticImageData;
     name: string;
     location: string;
     price: number;

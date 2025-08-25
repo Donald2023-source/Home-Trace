@@ -2,7 +2,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
-  amount: Number;
+  amount: number;
   className?: string;
 }
 const PriceFormatter = ({ className, amount }: Props) => {

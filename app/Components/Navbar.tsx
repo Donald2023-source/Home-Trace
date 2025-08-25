@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const [nav, setNav] = useState(false);
 
-  const handleScroll = (e: any, href: string) => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href?.replace("#", "");
     const element = document.getElementById(targetId);
@@ -24,7 +24,7 @@ const Navbar = () => {
     if (element) {
       const offset = 80;
       const elementPosition =
-        element?.getBoundingClientRect()?.top + window.scrollY;
+        element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
         behavior: "smooth",
