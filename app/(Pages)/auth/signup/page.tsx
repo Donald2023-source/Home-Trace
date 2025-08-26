@@ -40,7 +40,7 @@ const page = () => {
           </div>
 
           <form
-            className="md:w-[80%] w-full px-7 md:text-base tex-xs mx-auto flex flex-col gap-6 items-center justify-center"
+            className="md:w-[80%] w-full px-1 md:text-base text-sm mx-auto flex flex-col gap-6 items-center justify-center"
             action=""
           >
             <fieldset className="border w-full p-3 rounded-lg">
