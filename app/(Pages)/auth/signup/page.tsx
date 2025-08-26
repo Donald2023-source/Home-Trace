@@ -22,7 +22,11 @@ const page = () => {
             </p>
           </div>
 
-          form
+          <form action="">
+            <fieldset>
+              <input type="text" placeholder="" />
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
