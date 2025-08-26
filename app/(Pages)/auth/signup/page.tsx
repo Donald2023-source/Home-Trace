@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState<{
@@ -39,7 +40,7 @@ const page = () => {
           </div>
 
           <form
-            className="w-[80%] mx-auto flex flex-col gap-5 items-center justify-center"
+            className="w-[80%] mx-auto flex flex-col gap-6 items-center justify-center"
             action=""
           >
             <fieldset className="border w-full p-3 rounded-lg">
@@ -97,6 +98,13 @@ const page = () => {
             </fieldset>
 
             <Button className="w-full py-3 rounded-lg">Sign up</Button>
+
+            <p className="text-gray-400">
+              Already have an account?{" "}
+              <Link className="text-primary" href={"/auth/signin"}>
+                Sign in
+              </Link>
+            </p>
           </form>
         </div>
       </div>
