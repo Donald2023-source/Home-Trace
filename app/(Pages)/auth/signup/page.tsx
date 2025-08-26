@@ -62,7 +62,7 @@ const page = () => {
                 placeholder="Password"
               />
 
-              {passwordToggle ? (
+              {passwordToggle.password ? (
                 <Eye
                   onClick={() => handlePasswordToggle("password")}
                   className="text-gray-400 cursor-pointer"
@@ -82,7 +82,7 @@ const page = () => {
                 placeholder="Password"
               />
 
-              {passwordToggle ? (
+              {passwordToggle.confirmPassword ? (
                 <Eye
                   onClick={() => handlePasswordToggle("confirmPassword")}
                   className="text-gray-400 cursor-pointer"
@@ -94,6 +94,7 @@ const page = () => {
                 />
               )}
             </fieldset>
+            <button>Sign up</button>
           </form>
         </div>
       </div>
