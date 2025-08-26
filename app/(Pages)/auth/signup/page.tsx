@@ -4,6 +4,7 @@ import img1 from "@/public/Frame 18773.png";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import { Eye, EyeOff } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState<{
@@ -62,7 +63,7 @@ const page = () => {
                 placeholder="Password"
               />
 
-              {passwordToggle.password ? (
+              {passwordToggle.confirmPassword ? (
                 <Eye
                   onClick={() => handlePasswordToggle("password")}
                   className="text-gray-400 cursor-pointer"
@@ -82,7 +83,7 @@ const page = () => {
                 placeholder="Password"
               />
 
-              {passwordToggle.confirmPassword ? (
+              {passwordToggle ? (
                 <Eye
                   onClick={() => handlePasswordToggle("confirmPassword")}
                   className="text-gray-400 cursor-pointer"
@@ -94,7 +95,8 @@ const page = () => {
                 />
               )}
             </fieldset>
-            <button>Sign up</button>
+
+            <Button className="w-full py-3 rounded-lg">Sign up</Button>
           </form>
         </div>
       </div>
