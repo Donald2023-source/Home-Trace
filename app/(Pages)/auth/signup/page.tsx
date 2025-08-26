@@ -1,10 +1,26 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import img1 from "@/public/Frame 18773.png";
 import Image from "next/image";
 import logo from "@/public/logo.png";
+import { Eye, EyeOff } from "lucide-react";
 
 const page = () => {
+  const [passwordToggle, setPasswordToggle] = useState<{
+    [key: string]: boolean;
+  }>({
+    password: false,
+    confirmPassword: false,
+  });
+
+  const handlePasswordToggle = (field: string) => {
+    setPasswordToggle((prev) => ({
+      ...prev,
+      [field]: !prev[field],
+    }));
+    console.log("Clicked");
+  };
+
   return (
     <div className="flex md:flex-row flex-col items-center">
       <div className="md:w-[45%] h-72 md:h-screen">
@@ -21,7 +37,10 @@ const page = () => {
             </p>
           </div>
 
-          <form className="w-[80%] mx-auto flex flex-col gap-5 items-center justify-center" action="">
+          <form
+            className="w-[80%] mx-auto flex flex-col gap-5 items-center justify-center"
+            action=""
+          >
             <fieldset className="border w-full p-3 rounded-lg">
               <input
                 className="w-full h-full outline-none"
@@ -32,16 +51,48 @@ const page = () => {
             <fieldset className="border w-full p-3 rounded-lg">
               <input
                 className="w-full h-full outline-none"
-                type="text"
+                type="email"
                 placeholder="email@gmail.com"
               />
             </fieldset>
-             <fieldset className="border w-full p-3 rounded-lg">
+            <fieldset className="border flex items-center w-full p-3 rounded-lg">
               <input
                 className="w-full h-full outline-none"
-                type="text"
+                type={passwordToggle.password ? "text" : "password"}
                 placeholder="Password"
               />
+
+              {passwordToggle ? (
+                <Eye
+                  onClick={() => handlePasswordToggle("password")}
+                  className="text-gray-400 cursor-pointer"
+                />
+              ) : (
+                <EyeOff
+                  onClick={() => handlePasswordToggle("password")}
+                  className="text-gray-400 cursor-pointer"
+                />
+              )}
+            </fieldset>
+
+            <fieldset className="border flex items-center w-full p-3 rounded-lg">
+              <input
+                className="w-full h-full outline-none"
+                type={passwordToggle.confirmPassword ? "text" : "password"}
+                placeholder="Password"
+              />
+
+              {passwordToggle ? (
+                <Eye
+                  onClick={() => handlePasswordToggle("confirmPassword")}
+                  className="text-gray-400 cursor-pointer"
+                />
+              ) : (
+                <EyeOff
+                  onClick={() => handlePasswordToggle("confirmPassword")}
+                  className="text-gray-400 cursor-pointer"
+                />
+              )}
             </fieldset>
           </form>
         </div>
