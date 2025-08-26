@@ -16,7 +16,10 @@ const Navbar = () => {
 
   const [nav, setNav] = useState(false);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
     const targetId = href?.replace("#", "");
     const element = document.getElementById(targetId);
@@ -59,10 +62,10 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center space-x-4">
           <Button className="bg-myPrimary text-white border border-gray-500 px-4 py-2  cursor-pointer">
-            <Link href={"/auth/signup"}>Sign up</Link>
+            <Link href={"/auth"}>Sign up</Link>
           </Button>
-          <Button className=" text-white cursor-pointer px-4 py-2">
-            <Link href={"/auth/signin"}>Sign in</Link>
+          <Button className="text-white cursor-pointer px-4 py-2">
+            <Link href={"/auth"}>Sign in</Link>
           </Button>
         </div>
         <Menu
@@ -96,6 +99,12 @@ const Navbar = () => {
           >
             X
           </h2>
+          <Button className="bg-myPrimary text-black my-3 border-gray-500 px-4 py-2  cursor-pointer">
+            <Link href={"/auth"}>Sign up</Link>
+          </Button>
+          <Button className="text-white cursor-pointer px-4 py-2">
+            <Link href={"/auth"}>Sign in</Link>
+          </Button>
         </div>
       </nav>
     </div>
