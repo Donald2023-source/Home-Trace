@@ -87,7 +87,7 @@ const page = () => {
             Submit
           </Button>
 
-          <ArrowLeft />
+          <ArrowLeft className="absolute top-0 left-1" />
         </div>
       ) : (
         <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
