@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import img1 from "@/public/Frame 18773.png";
 import Image from "next/image";
 import logo from "@/public/logo.png";
@@ -47,6 +47,7 @@ const page = () => {
 
   const handleOtpVerification = () => {
     toast.error("Please enter the OTP");
+    console.log(otpValue)
   };
 
   return (
@@ -66,15 +67,15 @@ const page = () => {
           </div>
 
           <div>
-            <InputOTP maxLength={4}>
+            <InputOTP value={otpValue} onChange={setOtpValue} maxLength={4}>
               <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
               </InputOTPGroup>
               <InputOTPSeparator />
               <InputOTPGroup>
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
+              <InputOTPSlot index={2} />
+              <InputOTPSlot index={3} />
               </InputOTPGroup>
             </InputOTP>
           </div>
