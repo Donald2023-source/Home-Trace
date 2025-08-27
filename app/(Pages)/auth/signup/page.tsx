@@ -3,7 +3,7 @@ import React, { FormEvent, useState } from "react";
 import img1 from "@/public/Frame 18773.png";
 import Image from "next/image";
 import logo from "@/public/logo.png";
-import { Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -86,6 +86,8 @@ const page = () => {
           >
             Submit
           </Button>
+
+          <ArrowLeft />
         </div>
       ) : (
         <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
