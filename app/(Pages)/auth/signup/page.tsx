@@ -52,7 +52,7 @@ const page = () => {
 
   return (
     <div className="flex md:flex-row flex-col items-center">
-      <div className="md:w-[45%] h-72 md:h-screen">
+      <div className="md:w-[45%] h-82 md:h-screen">
         <Image className="h-full object-cover" src={img1} alt="image" />
       </div>
       {isOtp ? (
@@ -87,7 +87,10 @@ const page = () => {
             Submit
           </Button>
 
-          <ArrowLeft className="absolute top-0 left-1" />
+          <ArrowLeft
+            onClick={() => setOtp(false)}
+            className="absolute top-0 left-1 hover:scale-95 transition-all cursor-pointer "
+          />
         </div>
       ) : (
         <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
