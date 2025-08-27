@@ -6,6 +6,12 @@ import logo from "@/public/logo.png";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState<{
@@ -14,6 +20,14 @@ const page = () => {
     password: false,
     confirmPassword: false,
   });
+  const [formData, setFormData] = useState({
+    FullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [isOtp, setOtp] = useState(false);
 
   const handlePasswordToggle = (field: string) => {
     setPasswordToggle((prev) => ({
@@ -81,7 +95,7 @@ const page = () => {
               <input
                 className="w-full h-full outline-none"
                 type={passwordToggle.confirmPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder="Confirm Password"
               />
 
               {passwordToggle ? (
@@ -106,6 +120,31 @@ const page = () => {
               </Link>
             </p>
           </form>
+        </div>
+      </div>
+
+      <div>
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="py-6 font-bold text-primary text-xl md:text-3xl md:text-left text-center">
+            OTP
+          </h1>
+          <p className="text-gray-500 md:text-base text-sm md:text-left text-center pb-4">
+            Enter the verification code sent to the phone number provided above.
+          </p>
+        </div>
+
+        <div>
+          <InputOTP maxLength={4}>
+            <InputOTPGroup>
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+            </InputOTPGroup>
+            <InputOTPSeparator />
+            <InputOTPGroup>
+              <InputOTPSlot index={2} />
+              <InputOTPSlot index={3} />
+            </InputOTPGroup>
+          </InputOTP>
         </div>
       </div>
     </div>
