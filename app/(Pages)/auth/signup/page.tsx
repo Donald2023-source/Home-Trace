@@ -163,7 +163,7 @@ const page = () => {
                 )}
               </fieldset>
 
-              <Button className="w-full py-3 rounded-lg">Sign up</Button>
+              <Button className="w-full cursor-pointer py-3 rounded-lg">Sign up</Button>
 
               <p className="text-gray-400">
                 Already have an account?{" "}
