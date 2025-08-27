@@ -61,7 +61,7 @@ const page = () => {
             <h1 className="py-6 font-bold text-primary text-xl md:text-3xl md:text-left text-center">
               OTP
             </h1>
-            <p className="text-gray-500 md:text-base text-sm md:text-left text-center pb-4">
+            <p className="text-gray-500 md:w-full w-[70%] md:text-base text-sm md:text-left text-center pb-4">
               Enter the verification code sent to the email you provided above.
             </p>
           </div>
