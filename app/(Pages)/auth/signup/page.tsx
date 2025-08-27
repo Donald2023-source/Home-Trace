@@ -37,19 +37,25 @@ const page = () => {
     console.log("Clicked");
   };
 
+  const handleSubmit = () => {
+    console.log('Go to the next page')
+    
+    setOtp(true)
+  }
+
   return (
     <div className="flex md:flex-row flex-col items-center">
       <div className="md:w-[45%] h-72 md:h-screen">
         <Image className="h-full object-cover" src={img1} alt="image" />
       </div>
       {isOtp ? (
-        <div>
+        <div className="flex flex-col items-center justify-center mx-auto">
           <div className="flex flex-col items-center justify-center">
             <h1 className="py-6 font-bold text-primary text-xl md:text-3xl md:text-left text-center">
               OTP
             </h1>
             <p className="text-gray-500 md:text-base text-sm md:text-left text-center pb-4">
-              Enter the verification code sent to the phone number provided
+              Enter the verification code sent to the email you provided
               above.
             </p>
           </div>
@@ -67,6 +73,8 @@ const page = () => {
               </InputOTPGroup>
             </InputOTP>
           </div>
+
+          <Button className="py-3">Submit</Button>
         </div>
       ) : (
         <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
@@ -82,7 +90,8 @@ const page = () => {
 
             <form
               className="md:w-[80%] w-full px-1 md:text-base text-sm mx-auto flex flex-col gap-6 items-center justify-center"
-              action=""
+              action="POST"
+              onSubmit={() => handleSubmit()}
             >
               <fieldset className="border w-full p-3 rounded-lg">
                 <input
