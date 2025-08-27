@@ -89,7 +89,7 @@ const page = () => {
 
           <ArrowLeft
             onClick={() => setOtp(false)}
-            className="absolute top-0 left-1 hover:scale-95 transition-all cursor-pointer "
+            className="absolute md:top-0 top-3 left-1 hover:scale-95 transition-all cursor-pointer "
           />
         </div>
       ) : (
