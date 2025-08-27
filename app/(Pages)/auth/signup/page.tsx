@@ -69,13 +69,13 @@ const page = () => {
           <div>
             <InputOTP value={otpValue} onChange={setOtpValue} maxLength={4}>
               <InputOTPGroup>
-                <InputOTPSlot className="md:w-12 w-10 h-10 md:h-12" index={0} />
-                <InputOTPSlot className="md:w-12 w-10 h-10 md:h-12" index={1} />
+                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={0} />
+                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={1} />
               </InputOTPGroup>
               <InputOTPSeparator />
               <InputOTPGroup>
-                <InputOTPSlot className="md:w-12 w-10 h-10 md:h-12" index={2} />
-                <InputOTPSlot className="md:w-12 w-10 h-10 md:h-12" index={3} />
+                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={2} />
+                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={3} />
               </InputOTPGroup>
             </InputOTP>
           </div>
