@@ -12,6 +12,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { toast } from "sonner";
 
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState<{
@@ -28,6 +29,7 @@ const page = () => {
   });
 
   const [isOtp, setOtp] = useState(false);
+  const [otpValue, setOtpValue] = useState("");
 
   const handlePasswordToggle = (field: string) => {
     setPasswordToggle((prev) => ({
@@ -38,10 +40,14 @@ const page = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Go to the next page')
-    
-    setOtp(true)
-  }
+    console.log("Go to the next page");
+
+    setOtp(true);
+  };
+
+  const handleOtpVerification = () => {
+    toast.error("Please enter the OTP");
+  };
 
   return (
     <div className="flex md:flex-row flex-col items-center">
@@ -55,8 +61,7 @@ const page = () => {
               OTP
             </h1>
             <p className="text-gray-500 md:text-base text-sm md:text-left text-center pb-4">
-              Enter the verification code sent to the email you provided
-              above.
+              Enter the verification code sent to the email you provided above.
             </p>
           </div>
 
@@ -74,7 +79,12 @@ const page = () => {
             </InputOTP>
           </div>
 
-          <Button className="py-3">Submit</Button>
+          <Button
+            onClick={() => handleOtpVerification()}
+            className="my-3 cursor-pointer"
+          >
+            Submit
+          </Button>
         </div>
       ) : (
         <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
