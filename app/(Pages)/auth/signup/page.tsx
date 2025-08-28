@@ -6,6 +6,7 @@ import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [passwordToggle, setPasswordToggle] = useState({
@@ -21,7 +22,7 @@ const Page = () => {
 
   const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
-
+  const router = useRouter();
   const handlePasswordToggle = (field: "password") => {
     setPasswordToggle((prev) => ({
       ...prev,
@@ -73,6 +74,9 @@ const Page = () => {
 
     const data = await res.json();
     console.log(data);
+    if (data?.message === "Account verified successfully") {
+      router.push("/home");
+    }
     if (res.ok) {
       toast.success("Account verified!");
     } else {

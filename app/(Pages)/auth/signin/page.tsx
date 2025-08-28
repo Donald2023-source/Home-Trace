@@ -12,10 +12,8 @@ import { toast } from "sonner";
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [formData, setFormData] = useState({
-    FullName: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const handleSubmit = () => {
