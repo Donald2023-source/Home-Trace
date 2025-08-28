@@ -74,14 +74,16 @@ const page = () => {
             />
           <p className="border-l text-sm cursor-pointer pl-2 w-24 text-primary">Send code</p>
           </fieldset>
-           <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
-            <input
-              className="w-full font-semibold h-full outline-none"
-              type="number"
-              placeholder="Code"
-            />
-          
-          </fieldset>
+            <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
+              <input
+                className="w-full font-semibold h-full outline-none"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={4}
+                placeholder="Code"
+              />
+            </fieldset>
 
          </form>
 
