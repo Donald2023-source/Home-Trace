@@ -45,8 +45,12 @@ const page = () => {
     setOtp(true);
   };
 
-  const handleOtpVerification = () => {
-    toast.error("Please enter the OTP");
+  const handleOtpVerification = (e?: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!otpValue) {
+      toast.error("Please enter the OTP");
+      return;
+    }
     console.log(otpValue);
   };
 
@@ -65,7 +69,10 @@ const page = () => {
               Enter the verification code sent to the email you provided above.
             </p>
           </div>
-          <form className="md:w-[90%] w-[85%] text-sm md:text-base flex flex-col gap-6">
+          <form
+            onSubmit={() => handleOtpVerification()}
+            className="md:w-[90%] w-[85%] text-sm md:text-base flex flex-col gap-6"
+          >
             <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
               <p className="text-sm cursor-pointer px-1 pl-2 text-gray-400">
                 +234
@@ -92,14 +99,13 @@ const page = () => {
                 placeholder="Code"
               />
             </fieldset>
+            <Button
+              onClick={() => handleOtpVerification()}
+              className="my-3 w-full rounded-xl h-10 cursor-pointer"
+            >
+              Verify
+            </Button>
           </form>
-
-          <Button
-            onClick={() => handleOtpVerification()}
-            className="my-3 cursor-pointer"
-          >
-            Submit
-          </Button>
 
           <ArrowLeft
             onClick={() => setOtp(false)}
@@ -177,7 +183,7 @@ const page = () => {
                 )}
               </fieldset>
 
-              <Button className="w-full cursor-pointer py-3 rounded-lg">
+              <Button className="w-full h-10 cursor-pointer py-3 rounded-2xl">
                 Sign up
               </Button>
 
