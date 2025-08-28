@@ -39,13 +39,21 @@ const page = () => {
     console.log("Clicked");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log("Go to the next page");
-
-    setOtp(true);
+    const res = await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json"
+      },
+    });
+    const data = await res.json();
+    console.log(data)
+    // setOtp(true);
   };
 
-  const handleOtpVerification = (e?: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOtpVerification = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!otpValue) {
       toast.error("Please enter the OTP");
@@ -70,7 +78,7 @@ const page = () => {
             </p>
           </div>
           <form
-            onSubmit={() => handleOtpVerification()}
+            onSubmit={(e) => handleOtpVerification(e)}
             className="md:w-[90%] w-[85%] text-sm md:text-base flex flex-col gap-6"
           >
             <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
@@ -99,10 +107,7 @@ const page = () => {
                 placeholder="Code"
               />
             </fieldset>
-            <Button
-              onClick={() => handleOtpVerification()}
-              className="my-3 w-full rounded-xl h-10 cursor-pointer"
-            >
+            <Button className="my-3 w-full rounded-xl h-10 cursor-pointer">
               Verify
             </Button>
           </form>
@@ -127,7 +132,7 @@ const page = () => {
             <form
               className="md:w-[80%] w-full px-1 md:text-base text-sm mx-auto flex flex-col gap-6 items-center justify-center"
               action=""
-              onSubmit={() => handleSubmit()}
+              onSubmit={(e) => handleSubmit(e)}
             >
               <fieldset className="border w-full p-3 rounded-lg">
                 <input
