@@ -19,7 +19,7 @@ const ProductCard = ({ item }: Props) => {
     <div className="flex md:flex-row lg:flex-nowrap mx-auto md:flex-wrap flex-col md:gap-10 gap-5 md:justify-start justify-center items-center ">
       {item?.map((item, idx: number) => (
         <div
-          className="lg:w-[23rem] md:w-[16rem] sm:w-[17rem] lg:h-[23rem] md:h-[20rem]  hover:scale-95 transition-all cursor-pointer h-[23rem] shadow-lg rounded-lg my-5"
+          className="lg:w-[23rem] md:w-[16rem] sm:w-[12rem] w-[19rem] lg:h-[23rem] md:h-[20rem]  hover:scale-95 transition-all cursor-pointer h-[23rem]  shadow-lg rounded-lg my-5"
           key={idx}
         >
           <Image
