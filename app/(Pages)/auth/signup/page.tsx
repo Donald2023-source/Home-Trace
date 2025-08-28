@@ -66,13 +66,13 @@ const page = () => {
             </p>
           </div>
          <div className="w-[90%]">
-           <fieldset className="border justify-between  flex items-center w-full p-3 rounded-lg">
+           <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
             <input
               className="w-full h-full outline-none"
               type="tel"
               placeholder="Phone Number"
             />
-          <p className="border-l text-sm cursor-pointer px-2 w-full text-primary">Send code</p>
+          <p className="border-l text-sm cursor-pointer pl-2 w-20 text-primary">Send code</p>
           </fieldset>
 
          </div>
