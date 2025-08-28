@@ -2,71 +2,82 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import img1 from "@/public/Frame 18773.png";
 import Image from "next/image";
-import logo from "@/public/logo.png";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
 import { toast } from "sonner";
 
-const page = () => {
-  const [passwordToggle, setPasswordToggle] = useState<{
-    [key: string]: boolean;
-  }>({
+const Page = () => {
+  const [passwordToggle, setPasswordToggle] = useState({
     password: false,
-    confirmPassword: false,
   });
   const [formData, setFormData] = useState({
-    FullName: "",
+    fullName: "",
     email: "",
     password: "",
   });
-
-  const [isOtp, setOtp] = useState(false);
-  const [otpValue, setOtpValue] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
 
-  const handlePasswordToggle = (field: string) => {
+  const [isOtp, setOtp] = useState(false);
+  const [otpValue, setOtpValue] = useState("");
+
+  const handlePasswordToggle = (field: "password") => {
     setPasswordToggle((prev) => ({
       ...prev,
       [field]: !prev[field],
     }));
-    console.log("Clicked");
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUserInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Go to the next page");
+
+    if (formData.password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
     const res = await fetch("/api/signup", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
+
     const data = await res.json();
     console.log(data);
+    if (res.ok) {
+      toast.success("Signup successful. Check your email for OTP.");
+      setOtp(true);
+    } else {
+      toast.error(data.message || "Signup failed");
+    }
   };
 
-  const handleUserInput = (e: FormEvent<ChangeEvent<HTMLInputElement>>) => {
-    const target = e.target as HTMLInputElement;
-    const { name, value } = target;
-    
-  }
-
-  const handleOtpVerification = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleOtpVerification = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!otpValue) {
       toast.error("Please enter the OTP");
       return;
     }
-    console.log(otpValue);
+
+    const res = await fetch("/api/auth/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: formData.email, otp: otpValue }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    if (res.ok) {
+      toast.success("Account verified!");
+    } else {
+      toast.error(data.message || "Invalid OTP");
+    }
   };
 
   return (
@@ -74,101 +85,86 @@ const page = () => {
       <div className="md:w-[45%] h-82 md:h-screen">
         <Image className="h-full object-cover" src={img1} alt="image" />
       </div>
+
       {isOtp ? (
         <div className="flex relative flex-col items-center justify-center mx-auto">
-          <div className="flex flex-col items-center justify-center">
-            <h1 className="py-6 font-bold text-primary text-xl md:text-3xl md:text-left text-center">
-              OTP
-            </h1>
-            <p className="text-gray-500 md:w-full w-[70%] md:text-base text-sm md:text-left text-center pb-4">
-              Enter the verification code sent to the email you provided above.
-            </p>
-          </div>
+          <h1 className="py-6 font-bold text-primary text-xl md:text-3xl text-center">
+            OTP
+          </h1>
+          <p className="text-gray-500 text-sm text-center pb-4">
+            Enter the verification code sent to your email
+          </p>
+
           <form
-            onSubmit={(e) => handleOtpVerification(e)}
-            className="md:w-[90%] w-[85%] text-sm md:text-base flex flex-col gap-6"
+            onSubmit={handleOtpVerification}
+            className="w-[85%] flex flex-col gap-6"
           >
-            <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
-              <p className="text-sm cursor-pointer px-1 pl-2 text-gray-400">
-                +234
-              </p>
-              <input
-                className="w-full h-full px-3 outline-none"
-                type="text"
-                inputMode="numeric"
-                pattern="[1-9]*"
-                maxLength={10}
-                placeholder="Phone Number"
-              />
-              <p className="border-l md:text-sm text-xs cursor-pointer pl-2 md:w-[30%] w-[35%] text-primary">
-                Send code
-              </p>
-            </fieldset>
-            <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
+            <fieldset className="border flex items-center w-full p-3 rounded-lg">
               <input
                 className="w-full font-semibold h-full outline-none"
                 type="text"
                 inputMode="numeric"
-                pattern="[0-9]*"
-                maxLength={4}
-                placeholder="Code"
+                maxLength={6}
+                placeholder="Enter OTP"
+                value={otpValue}
+                onChange={(e) => setOtpValue(e.target.value)}
               />
             </fieldset>
-            <Button className="my-3 w-full rounded-xl h-10 cursor-pointer">
-              Verify
-            </Button>
+
+            <Button className="my-3 w-full rounded-xl h-10">Verify</Button>
           </form>
 
           <ArrowLeft
             onClick={() => setOtp(false)}
-            className="absolute md:top-0 top-4 md:left-1 left-8 hover:scale-95 transition-all cursor-pointer "
+            className="absolute top-4 left-8 hover:scale-95 cursor-pointer"
           />
         </div>
       ) : (
-        <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
-          <div className="md:w-[85%] md:block flex flex-col items-center w-[95%]">
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="py-6 font-bold text-primary text-xl md:text-3xl md:text-left text-center">
-                Create Account
-              </h1>
-              <p className="text-gray-500 md:text-base text-sm md:text-left text-center pb-4">
-                Kindly enter your information to create your account
-              </p>
-            </div>
+        <div className="md:p-10 p-5 w-[90%] shadow flex-1 relative bg-white/80 backdrop-blur-md rounded-xl">
+          <div className="md:w-[85%] w-[95%] mx-auto">
+            <h1 className="py-6 font-bold text-primary text-xl md:text-3xl text-center">
+              Create Account
+            </h1>
+            <p className="text-gray-500 text-sm text-center pb-4">
+              Kindly enter your information to create your account
+            </p>
 
             <form
-              className="md:w-[80%] w-full px-1 md:text-base text-sm mx-auto flex flex-col gap-6 items-center justify-center"
-              action=""
-              onSubmit={(e) => handleSubmit(e)}
+              className="w-full flex flex-col gap-6"
+              onSubmit={handleSubmit}
             >
               <fieldset className="border w-full p-3 rounded-lg">
                 <input
                   className="w-full h-full outline-none"
                   type="text"
                   placeholder="Full Name"
-                  name="Fullname"
-                  value={formData?.FullName}
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleUserInput}
                 />
               </fieldset>
+
               <fieldset className="border w-full p-3 rounded-lg">
                 <input
                   className="w-full h-full outline-none"
                   type="email"
                   placeholder="email@gmail.com"
                   name="email"
-                  value={formData?.email}
+                  value={formData.email}
+                  onChange={handleUserInput}
                 />
               </fieldset>
+
               <fieldset className="border flex items-center w-full p-3 rounded-lg">
                 <input
                   className="w-full h-full outline-none"
                   type={passwordToggle.password ? "text" : "password"}
                   placeholder="Password"
                   name="password"
-                  value={formData?.password}
+                  value={formData.password}
+                  onChange={handleUserInput}
                 />
-
-                {passwordToggle.confirmPassword ? (
+                {passwordToggle.password ? (
                   <Eye
                     onClick={() => handlePasswordToggle("password")}
                     className="text-gray-400 cursor-pointer"
@@ -186,8 +182,9 @@ const page = () => {
                   className="w-full h-full outline-none"
                   type={confirmPasswordToggle ? "text" : "password"}
                   placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-
                 {confirmPasswordToggle ? (
                   <Eye
                     onClick={() =>
@@ -205,15 +202,17 @@ const page = () => {
                 )}
               </fieldset>
 
-              <Button className="w-full h-10 cursor-pointer py-3 rounded-2xl">
-                Sign up
-              </Button>
+              <Button className="w-full h-10 rounded-2xl">Sign up</Button>
 
-              <p className="text-gray-400">
+              <p className="text-gray-400 text-center">
                 Already have an account?{" "}
                 <Link className="text-primary" href={"/auth/signin"}>
                   Sign in
                 </Link>
+              </p>
+
+              <p onClick={() => setOtp(false)} className="text-gray-400 cursor-pointer hover:text-primary text-center">
+                Already have an OTP? {" "}
               </p>
             </form>
           </div>
@@ -223,4 +222,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
