@@ -18,7 +18,13 @@ const page = () => {
 
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     try {
-      const response = await fetch('/api/signin')
+      const response = await fetch('/api/signin', {
+        method: "POST",
+        headers: {
+          "ContentType": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
     } catch(err) {
       console.error(err)
     }
