@@ -18,9 +18,9 @@ const page = () => {
 
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     try {
-
+      const response = await fetch('/api/signin')
     } catch(err) {
-      console.error(err?.message)
+      console.error(err)
     }
   };
 
