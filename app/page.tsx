@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
@@ -11,6 +12,7 @@ import Link from "next/link";
 import Testimonial from "./Components/Testimonial";
 import Faq from "./Components/Faq";
 import Footer from "./Components/Footer";
+import { motion } from "framer-motion";
 const page = () => {
   const Products = [
     {
@@ -46,9 +48,14 @@ const page = () => {
             Explore Our{" "}
             <span className="text-primary/70">Verified Properties</span>
           </h2>
-          <div className="flex ">
+          <motion.div
+            initial={{ x: 30, opacity: 0.5 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="flex "
+          >
             <ProductCard item={Products} />
-          </div>
+          </motion.div>
           <Link
             className="text-primary p-3 hover:scale-95 transition-all ml-auto md:mr-1 mr-10 border border-primary rounded-lg"
             href="/properties"

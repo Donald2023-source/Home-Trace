@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ChevronRight } from "lucide-react";
-
+import { motion } from "framer-motion";
 const Faq = () => {
   const [view, setView] = useState<number | null>(null);
 
@@ -33,7 +33,12 @@ const Faq = () => {
   ];
 
   return (
-    <div className="my-4 lg:px-0 px-3 md:px-4">
+    <motion.div
+      initial={{ x: 100, opacity: 0.3 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="my-4 lg:px-0 px-3 md:px-4"
+    >
       <h2 className="text-xl font-bold text-primary/70">
         Frequently Asked Questions (FAQ)
       </h2>
@@ -61,7 +66,7 @@ const Faq = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

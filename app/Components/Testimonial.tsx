@@ -4,6 +4,7 @@ import star from "@/public/Star 4.png";
 import user1 from "@/public/Ellipse 3.png";
 import user2 from "@/public/Ellipse 2.png";
 import user3 from "@/public/Ellipse 1.png";
+import { motion } from "framer-motion";
 const Testimonial = () => {
   const Testimonials = [
     {
@@ -23,7 +24,9 @@ const Testimonial = () => {
     },
   ];
   return (
-    <div className="w-full flex md:flex-row flex-col items-center justify-around gap-4 py-10">
+    <motion.div initial={{ x: 100, opacity: 0.3 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }} className="w-full flex md:flex-row flex-col items-center justify-around gap-4 py-10">
       {Testimonials.map((item, idx) => (
         <div
           key={idx}
@@ -69,7 +72,7 @@ const Testimonial = () => {
           </div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
