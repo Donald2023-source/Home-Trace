@@ -16,17 +16,26 @@ const page = () => {
     password: "",
   });
 
-  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
+  const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
-      const response = await fetch('/api/signin', {
+      const response = await fetch("/api/signin", {
         method: "POST",
         headers: {
-          "ContentType": "application/json"
+          ContentType: "application/json",
         },
-        body: JSON.stringify(formData)
-      })
-    } catch(err) {
-      console.error(err)
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -47,13 +56,15 @@ const page = () => {
           <form
             className="md:w-[80%] w-full px-1 md:text-base text-sm mx-auto flex flex-col gap-6 items-center justify-center"
             action="POST"
-            onSubmit={() => handleSubmit()}
+            onSubmit={handleSubmit}
           >
             <fieldset className="border w-full p-3 rounded-lg">
               <input
                 className="w-full h-full outline-none"
                 type="email"
                 placeholder="email@gmail.com"
+                name="email"
+                value={formData?.email}
               />
             </fieldset>
 
@@ -62,7 +73,10 @@ const page = () => {
                 className="w-full h-full outline-none"
                 type={passwordToggle ? "text" : "password"}
                 placeholder="Password"
+                name="password"
+                value={formData?.password}
               />
+
               {passwordToggle ? (
                 <Eye
                   onClick={() => setPasswordToggle(!passwordToggle)}
