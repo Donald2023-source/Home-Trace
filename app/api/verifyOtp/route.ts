@@ -13,13 +13,16 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    if (user.otp !== otp || user.otpExpires < new Date()) {
-      return NextResponse.json({ message: "Invalid or expired OTP" }, { status: 400 });
+    if (user.otp !== otp || user.otpExpiry < new Date()) {
+      return NextResponse.json(
+        { message: "Invalid or expired OTP" },
+        { status: 400 }
+      );
     }
 
     user.isVerified = true;
     user.otp = undefined;
-    user.otpExpires = undefined;
+    user.otpExpiry = undefined;
     await user.save();
 
     return NextResponse.json({ message: "Account verified successfully" });

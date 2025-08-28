@@ -52,6 +52,8 @@ export const POST = async (req: NextRequest) => {
       password: hashedPassword,
       fullName,
       isVerified: false,
+      otpExpiry: new Date(Date.now() + 10 * 60 * 1000),
+      otp: otp,
     });
 
     return NextResponse.json({
@@ -68,4 +70,3 @@ export const POST = async (req: NextRequest) => {
     });
   }
 };
-

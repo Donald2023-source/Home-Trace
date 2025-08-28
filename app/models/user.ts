@@ -5,6 +5,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   isVerified: boolean;
+  otpExpiry: string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -12,6 +13,8 @@ const UserSchema = new Schema<IUser>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   isVerified: { type: Boolean },
+  otpExpiry: { type: String },
+  otp: { type: String}
 });
 
 export default mongoose.models.User ||

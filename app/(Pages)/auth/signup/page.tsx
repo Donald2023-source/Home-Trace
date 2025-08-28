@@ -65,7 +65,7 @@ const Page = () => {
       return;
     }
 
-    const res = await fetch("/api/auth/verify-otp", {
+    const res = await fetch("/api/verifyOtp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: formData.email, otp: otpValue }),
@@ -97,7 +97,7 @@ const Page = () => {
 
           <form
             onSubmit={handleOtpVerification}
-            className="w-[85%] flex flex-col gap-6"
+            className="w-[90%] flex flex-col gap-6"
           >
             <fieldset className="border flex items-center w-full p-3 rounded-lg">
               <input
@@ -116,7 +116,7 @@ const Page = () => {
 
           <ArrowLeft
             onClick={() => setOtp(false)}
-            className="absolute top-4 left-8 hover:scale-95 cursor-pointer"
+            className="absolute top-4 md:left-1 left-8 hover:scale-95 cursor-pointer"
           />
         </div>
       ) : (
@@ -211,8 +211,11 @@ const Page = () => {
                 </Link>
               </p>
 
-              <p onClick={() => setOtp(false)} className="text-gray-400 cursor-pointer hover:text-primary text-center">
-                Already have an OTP? {" "}
+              <p
+                onClick={() => setOtp(true)}
+                className="text-gray-400 cursor-pointer hover:text-primary text-center"
+              >
+                Already have an OTP?{" "}
               </p>
             </form>
           </div>
