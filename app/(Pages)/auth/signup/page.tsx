@@ -65,17 +65,20 @@ const page = () => {
               Enter the verification code sent to the email you provided above.
             </p>
           </div>
-          <form className="md:w-[90%] w-[85%] flex flex-col gap-6">
+          <form className="md:w-[90%] w-[85%] text-sm md:text-base flex flex-col gap-6">
             <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
               <p className="text-sm cursor-pointer px-1 pl-2 text-gray-400">
                 +234
               </p>
               <input
                 className="w-full h-full px-3 outline-none"
-                type="tel"
+                type="text"
+                inputMode="numeric"
+                pattern="[1-9]*"
+                maxLength={10}
                 placeholder="Phone Number"
               />
-              <p className="border-l md:text-sm text-xs cursor-pointer pl-2 w-[30%] text-primary">
+              <p className="border-l md:text-sm text-xs cursor-pointer pl-2 md:w-[30%] w-[35%] text-primary">
                 Send code
               </p>
             </fieldset>
