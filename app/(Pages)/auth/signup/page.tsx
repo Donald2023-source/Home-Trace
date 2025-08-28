@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import img1 from "@/public/Frame 18773.png";
 import Image from "next/image";
 import logo from "@/public/logo.png";
@@ -25,11 +25,12 @@ const page = () => {
     FullName: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
 
   const handlePasswordToggle = (field: string) => {
     setPasswordToggle((prev) => ({
@@ -45,13 +46,19 @@ const page = () => {
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: {
-      "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify(formData),
     });
     const data = await res.json();
-    console.log(data)
-    // setOtp(true);
+    console.log(data);
   };
+
+  const handleUserInput = (e: FormEvent<ChangeEvent<HTMLInputElement>>) => {
+    const target = e.target as HTMLInputElement;
+    const { name, value } = target;
+    
+  }
 
   const handleOtpVerification = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -139,6 +146,8 @@ const page = () => {
                   className="w-full h-full outline-none"
                   type="text"
                   placeholder="Full Name"
+                  name="Fullname"
+                  value={formData?.FullName}
                 />
               </fieldset>
               <fieldset className="border w-full p-3 rounded-lg">
@@ -146,6 +155,8 @@ const page = () => {
                   className="w-full h-full outline-none"
                   type="email"
                   placeholder="email@gmail.com"
+                  name="email"
+                  value={formData?.email}
                 />
               </fieldset>
               <fieldset className="border flex items-center w-full p-3 rounded-lg">
@@ -153,6 +164,8 @@ const page = () => {
                   className="w-full h-full outline-none"
                   type={passwordToggle.password ? "text" : "password"}
                   placeholder="Password"
+                  name="password"
+                  value={formData?.password}
                 />
 
                 {passwordToggle.confirmPassword ? (
@@ -171,18 +184,22 @@ const page = () => {
               <fieldset className="border flex items-center w-full p-3 rounded-lg">
                 <input
                   className="w-full h-full outline-none"
-                  type={passwordToggle.confirmPassword ? "text" : "password"}
+                  type={confirmPasswordToggle ? "text" : "password"}
                   placeholder="Confirm Password"
                 />
 
-                {passwordToggle ? (
+                {confirmPasswordToggle ? (
                   <Eye
-                    onClick={() => handlePasswordToggle("confirmPassword")}
+                    onClick={() =>
+                      setConfirmPasswordToggle(!confirmPasswordToggle)
+                    }
                     className="text-gray-400 cursor-pointer"
                   />
                 ) : (
                   <EyeOff
-                    onClick={() => handlePasswordToggle("confirmPassword")}
+                    onClick={() =>
+                      setConfirmPasswordToggle(!confirmPasswordToggle)
+                    }
                     className="text-gray-400 cursor-pointer"
                   />
                 )}
