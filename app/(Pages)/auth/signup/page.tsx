@@ -65,7 +65,7 @@ const page = () => {
               Enter the verification code sent to the email you provided above.
             </p>
           </div>
-          <form className="w-[90%] flex flex-col gap-2">
+          <form className="md:w-[90%] w-[85%] flex flex-col gap-6">
             <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
               <input
                 className="w-full h-full outline-none"
@@ -101,7 +101,7 @@ const page = () => {
           />
         </div>
       ) : (
-        <div className="md:p-10 p-5 w-[85%] md:w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
+        <div className="md:p-10 p-5 w-[90%] shadow md:shadow-none flex-1 relative md:-top-0  -top-20 bg-white/80 backdrop-blur-md rounded-xl">
           <div className="md:w-[85%] md:block flex flex-col items-center w-[95%]">
             <div className="flex flex-col items-center justify-center">
               <h1 className="py-6 font-bold text-primary text-xl md:text-3xl md:text-left text-center">
