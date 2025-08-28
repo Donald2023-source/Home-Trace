@@ -16,8 +16,12 @@ const page = () => {
     password: "",
   });
 
-  const handleSubmit = () => {
-    console.log("Go to the next page");
+  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
+    try {
+
+    } catch(err) {
+      console.error(err?.message)
+    }
   };
 
   return (
