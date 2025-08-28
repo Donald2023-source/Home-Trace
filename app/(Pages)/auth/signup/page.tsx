@@ -65,17 +65,40 @@ const page = () => {
               Enter the verification code sent to the email you provided above.
             </p>
           </div>
+         <div className="w-[90%]">
+           <fieldset className="border justify-between  flex items-center w-full p-3 rounded-lg">
+            <input
+              className="w-full h-full outline-none"
+              type="tel"
+              placeholder="Phone Number"
+            />
+          <p className="border-l text-sm cursor-pointer px-2 w-full text-primary">Send code</p>
+          </fieldset>
+
+         </div>
 
           <div>
             <InputOTP value={otpValue} onChange={setOtpValue} maxLength={4}>
               <InputOTPGroup>
-                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={0} />
-                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={1} />
+                <InputOTPSlot
+                  className="md:w-12 font-bold w-10 h-10 md:h-12"
+                  index={0}
+                />
+                <InputOTPSlot
+                  className="md:w-12 font-bold w-10 h-10 md:h-12"
+                  index={1}
+                />
               </InputOTPGroup>
-              <InputOTPSeparator />
+
               <InputOTPGroup>
-                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={2} />
-                <InputOTPSlot className="md:w-12 font-bold w-10 h-10 md:h-12" index={3} />
+                <InputOTPSlot
+                  className="md:w-12 font-bold w-10 h-10 md:h-12"
+                  index={2}
+                />
+                <InputOTPSlot
+                  className="md:w-12 font-bold w-10 h-10 md:h-12"
+                  index={3}
+                />
               </InputOTPGroup>
             </InputOTP>
           </div>
@@ -106,7 +129,7 @@ const page = () => {
 
             <form
               className="md:w-[80%] w-full px-1 md:text-base text-sm mx-auto flex flex-col gap-6 items-center justify-center"
-              action="POST"
+              action=""
               onSubmit={() => handleSubmit()}
             >
               <fieldset className="border w-full p-3 rounded-lg">
@@ -163,7 +186,9 @@ const page = () => {
                 )}
               </fieldset>
 
-              <Button className="w-full cursor-pointer py-3 rounded-lg">Sign up</Button>
+              <Button className="w-full cursor-pointer py-3 rounded-lg">
+                Sign up
+              </Button>
 
               <p className="text-gray-400">
                 Already have an account?{" "}
