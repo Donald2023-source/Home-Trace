@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 import user from "@/app/models/user";
 import bcrypt from "bcryptjs";
+import { connectDB } from "@/app/libs/mongo";
 export const POST = async (req: NextRequest) => {
   try {
+    await connectDB();
     const reqBody = await req.json();
     const { email, password } = reqBody;
 
