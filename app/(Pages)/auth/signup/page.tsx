@@ -65,7 +65,7 @@ const page = () => {
               Enter the verification code sent to the email you provided above.
             </p>
           </div>
-         <form className="w-[90%]">
+         <form className="w-[90%] flex flex-col gap-2">
            <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
             <input
               className="w-full h-full outline-none"
@@ -76,11 +76,11 @@ const page = () => {
           </fieldset>
            <fieldset className="border justify-between flex items-center w-full p-3 rounded-lg">
             <input
-              className="w-full h-full outline-none"
-              type="tel"
-              placeholder="Phone Number"
+              className="w-full font-semibold h-full outline-none"
+              type="number"
+              placeholder="Code"
             />
-          <p className="border-l text-sm cursor-pointer pl-2 w-24 text-primary">Send code</p>
+          
           </fieldset>
 
          </form>
