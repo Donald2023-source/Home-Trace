@@ -6,6 +6,7 @@ export interface IUser extends Document {
   password: string;
   isVerified: boolean;
   otpExpiry: string;
+  otp: string
 }
 
 const UserSchema = new Schema<IUser>({

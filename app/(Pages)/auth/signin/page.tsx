@@ -38,7 +38,8 @@ const page = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      dispatch(setUser(data?.fullName));
+      dispatch(setUser(data?.user));
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
