@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/app/Redux/authSlice/authSlice";
+import { RootState } from "@/app/Redux/Store/store";
 
 const Page = () => {
   const [passwordToggle, setPasswordToggle] = useState({
@@ -24,6 +25,7 @@ const Page = () => {
 
   const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
+  const dispatch = useDispatch();
   const router = useRouter();
   const handlePasswordToggle = (field: "password") => {
     setPasswordToggle((prev) => ({
@@ -76,7 +78,7 @@ const Page = () => {
 
     const data = await res.json();
     console.log(data);
-    const dispatch = useDispatch();
+
     if (data?.message === "Account verified successfully") {
       // router.push("/home");
       dispatch(setUser(data?.user));
@@ -87,6 +89,9 @@ const Page = () => {
       toast.error(data.message || "Invalid OTP");
     }
   };
+
+  const user = useSelector((state: RootState) => state.auth.user);
+  console.log("data", user);
 
   return (
     <div className="flex md:flex-row flex-col items-center">
@@ -119,7 +124,9 @@ const Page = () => {
               />
             </fieldset>
 
-            <Button className="my-3 w-full rounded-xl h-10">Verify</Button>
+            <Button className="my-3 w-full rounded-xl cursor-pointer h-10">
+              Verify
+            </Button>
           </form>
 
           <ArrowLeft
@@ -210,7 +217,9 @@ const Page = () => {
                 )}
               </fieldset>
 
-              <Button className="w-full h-10 rounded-2xl">Sign up</Button>
+              <Button className="w-full h-12 cursor-pointer rounded-2xl">
+                Sign up
+              </Button>
 
               <p className="text-gray-400 text-center">
                 Already have an account?{" "}
