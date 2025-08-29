@@ -34,6 +34,7 @@ const page = () => {
         },
         body: JSON.stringify(formData),
       });
+      const data = await response.json();
     } catch (err) {
       console.error(err);
     }
