@@ -33,7 +33,7 @@ export const POST = async (req: NextRequest) => {
         email: User?.email,
       },
     });
-  } catch (error) {
+  } catch (error: Error | unknown) {
     return NextResponse.json({ error: error });
   }
 };

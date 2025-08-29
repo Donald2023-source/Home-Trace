@@ -61,11 +61,11 @@ export const POST = async (req: NextRequest) => {
       userId: newUser._id,
       success: true,
     });
-  } catch (err: any) {
+  } catch (err: Error | unknown) {
     console.error("Signup Error:", err);
     return NextResponse.json({
       message: "Something went wrong",
-      error: err.message,
+      error: err,
       success: false,
     });
   }

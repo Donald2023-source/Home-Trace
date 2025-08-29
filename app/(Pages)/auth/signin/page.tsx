@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/app/Redux/authSlice/authSlice";
 import { RootState } from "@/app/Redux/Store/store";
 
-const page = () => {
+const Page = () => {
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -116,4 +116,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
