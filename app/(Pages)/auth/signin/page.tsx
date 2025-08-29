@@ -38,7 +38,7 @@ const page = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      dispatch(setUser(formData.email));
+      dispatch(setUser(data?.fullName));
     } catch (err) {
       console.error(err);
     }

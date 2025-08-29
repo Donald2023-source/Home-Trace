@@ -26,7 +26,10 @@ export const POST = async (req: NextRequest) => {
       return NextResponse.json({ message: "Invalid credentials" });
     }
 
-    return NextResponse.json({ message: "User logged in successfully" });
+    return NextResponse.json({
+      message: "User logged in successfully",
+      fullName: User.fullName,
+    });
   } catch (error) {
     return NextResponse.json({ error: error });
   }
