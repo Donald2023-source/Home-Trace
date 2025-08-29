@@ -7,7 +7,7 @@ import user from "@/public/Vector (5).png";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-const page = () => {
+const Page = () => {
   const [selectedRole, setSelectedRole] = useState("");
   const router = useRouter();
 
@@ -75,4 +75,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
