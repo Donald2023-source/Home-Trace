@@ -1,7 +1,10 @@
+
 import type { Metadata } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { Provider } from "react-redux";
+import { store } from "./Redux/Store/store";
 
 // Load Roboto for body text
 const roboto = Roboto({
@@ -30,7 +33,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={`${roboto.variable} ${poppins.variable} antialiased`}>
-        {children}
+        <Provider store={store}>{children}</Provider>
         <Toaster position="top-right" />
       </body>
     </html>
