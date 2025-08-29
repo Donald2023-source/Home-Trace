@@ -1,3 +1,4 @@
+
 "use client";
 import React, { FormEvent, useState } from "react";
 import img1 from "@/public/Frame 18773.png";
@@ -8,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setUsers } from "@/app/Redux/authSlice/authSlice";
 
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState(false);
@@ -24,6 +27,7 @@ const page = () => {
     }));
   };
 
+  const dispatch = useDispatch()
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -35,6 +39,8 @@ const page = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
+      dispatch(setUser)
+
     } catch (err) {
       console.error(err);
     }
