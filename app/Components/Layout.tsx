@@ -2,9 +2,9 @@
 import { Provider } from "react-redux";
 import { store } from "@/app/Redux/Store/store";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body>
         <Provider store={store}>{children}</Provider>
       </body>
