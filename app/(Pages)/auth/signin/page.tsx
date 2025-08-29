@@ -65,6 +65,7 @@ const page = () => {
                 placeholder="email@gmail.com"
                 name="email"
                 value={formData?.email}
+                onChange={handleUserInput}
               />
             </fieldset>
 
@@ -75,6 +76,7 @@ const page = () => {
                 placeholder="Password"
                 name="password"
                 value={formData?.password}
+                onChange={handleUserInput}
               />
 
               {passwordToggle ? (

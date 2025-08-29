@@ -18,6 +18,9 @@ export const POST = async (req: NextRequest) => {
     if (!User) {
       return NextResponse.json({ message: "User does not exist" });
     }
+    if (!User.isVerified) {
+      return;
+    }
     const isMatch = await bcrypt.compare(password, User.password);
     if (!isMatch) {
       return NextResponse.json({ message: "Invalid credentials" });
