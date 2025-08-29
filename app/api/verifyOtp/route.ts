@@ -25,7 +25,13 @@ export async function POST(req: Request) {
     user.otpExpiry = undefined;
     await user.save();
 
-    return NextResponse.json({ message: "Account verified successfully" });
+    return NextResponse.json({
+      message: "Account verified successfully",
+      user: {
+        fullName: user?.fullName,
+        email: user?.email,
+      },
+    });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }

@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/app/Redux/authSlice/authSlice";
 
 const Page = () => {
   const [passwordToggle, setPasswordToggle] = useState({
@@ -74,8 +76,10 @@ const Page = () => {
 
     const data = await res.json();
     console.log(data);
+    const dispatch = useDispatch();
     if (data?.message === "Account verified successfully") {
-      router.push("/home");
+      // router.push("/home");
+      dispatch(setUser(data?.user));
     }
     if (res.ok) {
       toast.success("Account verified!");
