@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest) => {
       return NextResponse.json({ message: "User does not exist" });
     }
     if (!User.isVerified) {
-      return;
+      return NextResponse.json({ message: "User is not verified" });
     }
     const isMatch = await bcrypt.compare(password, User.password);
     if (!isMatch) {
