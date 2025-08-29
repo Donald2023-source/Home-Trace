@@ -8,8 +8,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 import { toast } from "sonner";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/app/Redux/authSlice/authSlice";
+import { RootState } from "@/app/Redux/Store/store";
 
 const page = () => {
   const [passwordToggle, setPasswordToggle] = useState(false);
@@ -33,7 +34,7 @@ const page = () => {
       const response = await fetch("/api/signin", {
         method: "POST",
         headers: {
-          ContentType: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });

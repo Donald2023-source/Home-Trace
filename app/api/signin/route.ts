@@ -28,7 +28,10 @@ export const POST = async (req: NextRequest) => {
 
     return NextResponse.json({
       message: "User logged in successfully",
-      user: User?.fullName,
+      user: {
+        fullName: User?.fullName,
+        email: User?.email,
+      },
     });
   } catch (error) {
     return NextResponse.json({ error: error });
