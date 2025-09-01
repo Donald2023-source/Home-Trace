@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/app/Redux/authSlice/authSlice";
 import { RootState } from "@/app/Redux/Store/store";
+import Loader from "@/app/Components/Loader";
 
 const Page = () => {
   const [passwordToggle, setPasswordToggle] = useState({
@@ -22,6 +23,7 @@ const Page = () => {
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
@@ -218,7 +220,7 @@ const Page = () => {
               </fieldset>
 
               <Button className="w-full h-12 cursor-pointer rounded-2xl">
-                Sign up
+                {isLoading ? "Sign up" : <Loader />}
               </Button>
 
               <p className="text-gray-400 text-center">
