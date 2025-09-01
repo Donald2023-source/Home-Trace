@@ -23,7 +23,7 @@ const Page = () => {
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
@@ -43,25 +43,33 @@ const Page = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    try {
+      if (formData.password !== confirmPassword) {
+        toast.error("Passwords do not match");
+        return;
+      }
 
-    if (formData.password !== confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
-    }
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const res = await fetch("/api/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await res.json();
-    console.log(data);
-    if (res.ok) {
-      toast.success("Signup successful. Check your email for OTP.");
-      setOtp(true);
-    } else {
-      toast.error(data.message || "Signup failed");
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        toast.success("Signup successful. Check your email for OTP.");
+        setOtp(true);
+        setIsLoading(false);
+      } else {
+        toast.error(data.message || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Something went wrong", error);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -137,7 +145,7 @@ const Page = () => {
           />
         </div>
       ) : (
-        <div className="md:p-10 p-5 w-[90%] shadow flex-1 relative bg-white/80 backdrop-blur-md rounded-xl">
+        <div className="md:p-10 p-5 w-[90%] shadow flex-1 -top-10 md:-top-0 md:shadow-none relative bg-white/80 backdrop-blur-md rounded-xl">
           <div className="md:w-[85%] w-[95%] mx-auto">
             <h1 className="py-6 font-bold text-primary text-xl md:text-3xl text-center">
               Create Account
@@ -158,6 +166,7 @@ const Page = () => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleUserInput}
+                  required
                 />
               </fieldset>
 
@@ -169,6 +178,7 @@ const Page = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleUserInput}
+                  required
                 />
               </fieldset>
 
@@ -201,6 +211,7 @@ const Page = () => {
                   placeholder="Confirm Password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
                 />
                 {confirmPasswordToggle ? (
                   <Eye
@@ -219,8 +230,14 @@ const Page = () => {
                 )}
               </fieldset>
 
-              <Button className="w-full h-12 cursor-pointer rounded-2xl">
-                {isLoading ? "Sign up" : <Loader />}
+              <Button
+                className={
+                  isLoading
+                    ? "h-12 cursor-not-allowed"
+                    : "w-full h-12 cursor-pointer rounded-2xl"
+                }
+              >
+                {isLoading ? <Loader /> : "Sign up"}
               </Button>
 
               <p className="text-gray-400 text-center">
