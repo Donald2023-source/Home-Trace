@@ -23,7 +23,7 @@ const Page = () => {
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
@@ -75,28 +75,37 @@ const Page = () => {
 
   const handleOtpVerification = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!otpValue) {
-      toast.error("Please enter the OTP");
-      return;
-    }
+    setIsLoading(true);
+    try {
+      if (!otpValue) {
+        toast.error("Please enter the OTP");
+        return;
+      }
 
-    const res = await fetch("/api/verifyOtp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: formData.email, otp: otpValue }),
-    });
+      const res = await fetch("/api/verifyOtp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email, otp: otpValue }),
+      });
 
-    const data = await res.json();
-    console.log(data);
+      const data = await res.json();
+      console.log(data);
 
-    if (data?.message === "Account verified successfully") {
-      // router.push("/home");
-      dispatch(setUser(data?.user));
-    }
-    if (res.ok) {
-      toast.success("Account verified!");
-    } else {
-      toast.error(data.message || "Invalid OTP");
+      if (data?.message === "Account verified successfully") {
+        // router.push("/home");
+        dispatch(setUser(data?.user));
+      }
+      if (res.ok) {
+        toast.success("Account verified!(");
+        setIsLoading(false);
+      } else {
+        toast.error(data.message || "Invalid OTP");
+      }
+    } catch (error) {
+      console.error("Something went wrong", error);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -135,7 +144,7 @@ const Page = () => {
             </fieldset>
 
             <Button className="my-3 w-full rounded-xl cursor-pointer h-10">
-              Verify
+              {isLoading ? <Loader /> : "Verify"}
             </Button>
           </form>
 
