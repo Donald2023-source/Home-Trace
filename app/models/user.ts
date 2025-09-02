@@ -15,7 +15,7 @@ export interface IUser extends Document {
   NIN: number;
   cert: File;
   verifiedAgent: boolean;
-  plan: String;
+  plan: string;
 }
 
 const UserSchema = new Schema<IUser>({
