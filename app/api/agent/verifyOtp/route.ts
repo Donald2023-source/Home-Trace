@@ -2,7 +2,7 @@ import { connectDB } from "@/app/libs/mongo";
 import user from "@/app/models/user";
 import { NextResponse } from "next/server";
 
-export const POST = async (req: NextResponse) => {
+export async function POST(req: NextResponse) {
   await connectDB();
   try {
     const { email, otp, NIN, cert } = await req.json();
@@ -32,4 +32,4 @@ export const POST = async (req: NextResponse) => {
   } catch (error: Error | unknown) {
     return NextResponse.json({ message: error });
   }
-};
+}
