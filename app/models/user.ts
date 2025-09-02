@@ -15,6 +15,7 @@ export interface IUser extends Document {
   NIN: number;
   cert: File;
   verifiedAgent: boolean;
+  plan: String;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -28,6 +29,11 @@ const UserSchema = new Schema<IUser>({
   NIN: { type: Number, unique: true },
   cert: { type: String },
   verifiedAgent: { type: Boolean, default: false },
+  plan: {
+    type: String,
+    enum: ["Basic", "Standard", "Premium"],
+    default: "Basic",
+  },
 });
 
 export default mongoose.models.User ||

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export const POST = async (req: NextResponse) => {
   await connectDB();
   try {
-    const { email, otp } = await req.json();
+    const { email, otp, NIN, cert } = await req.json();
 
     const User = await user.findOne({ email });
     if (!User) {
@@ -15,6 +15,9 @@ export const POST = async (req: NextResponse) => {
     if (User.otp != otp || User.otpExpiry < new Date()) {
       return NextResponse.json({ message: "Invalid or expired OTP" });
     }
+
+    User.cert = cert;
+    User.NIN = NIN;
 
     User.isVerified = true;
     User.otp = undefined;

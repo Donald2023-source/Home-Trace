@@ -120,7 +120,7 @@ const Page = () => {
       </div>
 
       {isOtp ? (
-        <div className="flex relative -top-16 rounded-2xl backdrop-blur-md bg-white/80 px-4 flex-col items-center justify-center mx-auto">
+        <div className="flex relative md:-top-0 -top-16 rounded-2xl backdrop-blur-md bg-white/80 px-4 flex-col items-center justify-center mx-auto">
           <h1 className="py-6 font-bold text-primary text-xl md:text-3xl text-center">
             Verification
           </h1>
