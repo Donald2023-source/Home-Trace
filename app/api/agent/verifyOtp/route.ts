@@ -16,6 +16,11 @@ export const POST = async (req: NextResponse) => {
       return NextResponse.json({ message: "Invalid or expired OTP" });
     }
 
+    User.isVerified = true;
+    User.otp = undefined;
+    User.otpExpiry = undefined;
+    await User.save();
+
     return NextResponse.json({
       message: "Account Verified successfully. Please proceed to the next step",
       email: User?.email,

@@ -24,10 +24,10 @@ const UserSchema = new Schema<IUser>({
   isVerified: { type: Boolean, required: true },
   otpExpiry: { type: String, required: true },
   otp: { type: String, required: true },
-  role: { type: String },
-  NIN: { type: Number },
-  cert: { type: File },
-  verifiedAgent: { type: Boolean },
+  role: { type: String, enum: ["user", "agent", "admin"], default: "user" },
+  NIN: { type: Number, unique: true },
+  cert: { type: String },
+  verifiedAgent: { type: Boolean, default: false },
 });
 
 export default mongoose.models.User ||

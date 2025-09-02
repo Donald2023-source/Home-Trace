@@ -42,7 +42,7 @@ export const POST = async (req: NextRequest) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Verify your account",
-      text: `Hello ${fullName}, Welcome to Home trace,, thank you for signing up as an agent. Your OTP code is ${otp}. It expires in 10 minutes.`,
+      text: `Hello ${fullName}, Welcome to Home trace, thank you for signing up as an agent. Your OTP code is ${otp}. It expires in 10 minutes.`,
     });
 
     const hashedPassword = await bcrypt.hash(password, 10);
