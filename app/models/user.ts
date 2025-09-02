@@ -7,17 +7,21 @@ export interface IUser extends Document {
   isVerified: boolean;
   otpExpiry: string;
   otp: string;
-  role: string
+  role: string;
+  NIN: number;
+  cert: File;
 }
 
 const UserSchema = new Schema<IUser>({
   fullName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  isVerified: { type: Boolean },
-  otpExpiry: { type: String },
-  otp: { type: String },
+  isVerified: { type: Boolean, required: true },
+  otpExpiry: { type: String, required: true },
+  otp: { type: String, required: true },
   role: { type: String },
+  NIN: { type: Number },
+  cert: { type: File },
 });
 
 export default mongoose.models.User ||
