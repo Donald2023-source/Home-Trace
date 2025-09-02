@@ -1,8 +1,8 @@
 import { connectDB } from "@/app/libs/mongo";
 import user from "@/app/models/user";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextResponse) {
+export async function POST(req: NextRequest) {
   await connectDB();
   try {
     const { email, otp, NIN, cert } = await req.json();
