@@ -25,8 +25,9 @@ const Page = () => {
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isOtp, setOtp] = useState(false);
+  const [isOtp, setOtp] = useState(true);
   const [otpValue, setOtpValue] = useState("");
+  const [NIN, setNIN] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
   const handlePasswordToggle = (field: "password") => {
@@ -119,18 +120,30 @@ const Page = () => {
       </div>
 
       {isOtp ? (
-        <div className="flex relative flex-col items-center justify-center mx-auto">
+        <div className="flex relative -top-16 rounded-2xl backdrop-blur-md bg-white/80 px-4 flex-col items-center justify-center mx-auto">
           <h1 className="py-6 font-bold text-primary text-xl md:text-3xl text-center">
-            OTP
+            Verification
           </h1>
           <p className="text-gray-500 text-sm text-center pb-4">
-            Enter the verification code sent to your email
+            Please enter the following appropriately, check your email for OTP
           </p>
 
           <form
             onSubmit={handleOtpVerification}
-            className="w-[90%] flex flex-col gap-6"
+            className="w-[90%] md:w-full flex flex-col gap-6"
           >
+            <fieldset className="border flex items-center w-full p-3 rounded-lg">
+              <input
+                className="w-full font-semibold h-full outline-none"
+                type="text"
+                inputMode="numeric"
+                maxLength={11}
+                placeholder="NIN"
+                value={otpValue}
+                onChange={(e) => setNIN(e.target.value)}
+              />
+            </fieldset>
+
             <fieldset className="border flex items-center w-full p-3 rounded-lg">
               <input
                 className="w-full font-semibold h-full outline-none"
@@ -142,6 +155,21 @@ const Page = () => {
                 onChange={(e) => setOtpValue(e.target.value)}
               />
             </fieldset>
+
+            <div className="flex items-center gap-8">
+              <input className="hidden" type="file" name="file" id="file" />
+              <p className="md:text-base text-xs">
+                Upload a valid NIESV Membership Certificate
+              </p>
+              <Button
+                type="button"
+                className="bg-transparent border-primary border text-black hover:bg-transparent hover:scale-95 cursor-pointer"
+              >
+                <label className="cursor-pointer" htmlFor="file">
+                  Upload
+                </label>
+              </Button>
+            </div>
 
             <Button className="my-3 w-full rounded-xl cursor-pointer h-10">
               {isLoading ? <Loader /> : "Verify"}

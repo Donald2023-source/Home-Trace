@@ -12,7 +12,7 @@ export const POST = async (req: NextResponse) => {
       return NextResponse.json({ message: "User not found" });
     }
 
-    if (User.otp != otp || User.optExpiry < new Date()) {
+    if (User.otp != otp || User.otpExpiry < new Date()) {
       return NextResponse.json({ message: "Invalid or expired OTP" });
     }
 
