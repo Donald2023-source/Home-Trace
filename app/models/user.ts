@@ -1,4 +1,8 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, {
+  Schema,
+  Document,
+  TypeExpressionOperatorReturningBoolean,
+} from "mongoose";
 
 export interface IUser extends Document {
   fullName: string;
@@ -10,6 +14,7 @@ export interface IUser extends Document {
   role: string;
   NIN: number;
   cert: File;
+  verifiedAgent: boolean;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -22,6 +27,7 @@ const UserSchema = new Schema<IUser>({
   role: { type: String },
   NIN: { type: Number },
   cert: { type: File },
+  verifiedAgent: { type: Boolean },
 });
 
 export default mongoose.models.User ||
