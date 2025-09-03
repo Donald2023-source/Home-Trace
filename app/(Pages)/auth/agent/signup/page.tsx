@@ -145,7 +145,7 @@ const Page = () => {
                 inputMode="numeric"
                 maxLength={11}
                 placeholder="NIN"
-                value={otpValue}
+                value={NIN}
                 onChange={(e) => setNIN(e.target.value)}
               />
             </fieldset>
@@ -168,7 +168,7 @@ const Page = () => {
                   const file = e.target.files?.[0];
                   if (file) {
                     console.log("Selected file:", file);
-                      setCert(file)
+                    setCert(file);
                   }
                 }}
                 className="hidden"
@@ -178,9 +178,9 @@ const Page = () => {
               />
 
               <p className="md:text-base text-xs">
-                {
-                  
-                }
+                {cert?.name
+                  ? cert?.name
+                  : "Upload a valid NIESV Membership Certificate"}
               </p>
               <Button
                 type="button"
