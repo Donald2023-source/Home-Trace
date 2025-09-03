@@ -28,6 +28,7 @@ const Page = () => {
   const [isOtp, setOtp] = useState(true);
   const [otpValue, setOtpValue] = useState("");
   const [NIN, setNIN] = useState("");
+  const [cert, setCert] = useState<File | null>(null);
   const dispatch = useDispatch();
   const router = useRouter();
   const handlePasswordToggle = (field: "password") => {
@@ -86,7 +87,12 @@ const Page = () => {
       const res = await fetch("/api/verifyOtp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email, otp: otpValue }),
+        body: JSON.stringify({
+          email: formData.email,
+          otp: otpValue,
+          NIN: NIN,
+          cert: cert,
+        }),
       });
 
       const data = await res.json();
@@ -157,9 +163,24 @@ const Page = () => {
             </fieldset>
 
             <div className="flex items-center gap-8">
-              <input className="hidden" type="file" name="file" id="file" />
+              <input
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    console.log("Selected file:", file);
+                      setCert(file)
+                  }
+                }}
+                className="hidden"
+                type="file"
+                name="file"
+                id="file"
+              />
+
               <p className="md:text-base text-xs">
-                Upload a valid NIESV Membership Certificate
+                {
+                  
+                }
               </p>
               <Button
                 type="button"
