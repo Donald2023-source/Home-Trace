@@ -55,20 +55,25 @@ export const POST = async (req: NextRequest) => {
       otpExpiry: new Date(Date.now() + 10 * 60 * 1000),
       otp: otp,
       role: "agent",
+      plan: "Basic",
     });
 
     return NextResponse.json({
       message: "Signup successful, check your email for OTP",
       userId: newUser._id,
       success: true,
-      role: "agent",
+      role: newUser.role,
+      plan: newUser.plan,
     });
   } catch (err: Error | unknown) {
     console.error("Signup Error:", err);
-    return NextResponse.json({
-      message: "Something went wrong",
-      error: err,
-      success: false,
-    });
+    return NextResponse.json(
+      {
+        message: "Something went wrong",
+        error: err,
+        success: false,
+      },
+      { status: 500 }
+    );
   }
 };
