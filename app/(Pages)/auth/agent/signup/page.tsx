@@ -108,6 +108,10 @@ const Page = () => {
       } else {
         toast.error(data.message || "Invalid OTP");
       }
+
+      if(data?.message === "Your OTP has expired") {
+        return <div className="text-primary">Request another OTP</div>
+      }
     } catch (error) {
       console.error("Something went wrong", error);
       setIsLoading(false);
