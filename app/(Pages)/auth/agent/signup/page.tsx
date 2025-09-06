@@ -110,6 +110,7 @@ const Page = () => {
     } catch (error) {
       console.error("Something went wrong", error);
       toast.error("Something went wrong");
+      toast.error("Something went error");
     } finally {
       setIsLoading(false);
     }

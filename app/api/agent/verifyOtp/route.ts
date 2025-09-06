@@ -44,9 +44,11 @@ export async function POST(req: NextRequest) {
     const base64 = buffer.toString("base64");
     const dataURI = `data:${cert.type};base64,${base64}`;
 
+    const resourceType = cert.type.includes("pdf") ? "raw" : "image";
+
     const uploadResponse = await cloudinary.uploader.upload(dataURI, {
       folder: "certificates",
-      resource_type: "auto",
+      resource_type: resourceType,
     });
 
     User.cert = uploadResponse.secure_url;
