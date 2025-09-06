@@ -99,7 +99,6 @@ const Page = () => {
       console.log(data);
 
       if (data?.message === "Account verified successfully") {
-        // router.push("/home");
         dispatch(setUser(data?.user));
       }
       if (res.ok) {
@@ -109,8 +108,8 @@ const Page = () => {
         toast.error(data.message || "Invalid OTP");
       }
 
-      if(data?.message === "Your OTP has expired") {
-        return <div className="text-primary">Request another OTP</div>
+      if (data?.message === "Your OTP has expired") {
+        return <div className="text-primary">Request another OTP</div>;
       }
     } catch (error) {
       console.error("Something went wrong", error);
