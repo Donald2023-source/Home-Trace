@@ -35,7 +35,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="absolute inset-0 bg-black/20 backdrop-blur-xl h-fit p-3 md:p-2 md:p-3 text-white z-20">
+    <div className="absolute inset-0 bg-black/20 backdrop-blur-xl h-fit p-3 md:p-2 text-white z-20">
       <nav className="flex justify-between items-center max-w-6xl mx-auto w-full">
         <Link href={"/"}>
           <Image
@@ -76,8 +76,8 @@ const Navbar = () => {
         <div
           className={`${
             nav
-              ? "md:hidden flex flex-col h-screen justify-center to-[60%] bg-white backdrop-xl text-black items-center absolute top-0 left-0 right-0 text-black translate-x-0 transition-all duration-300 ease-in-out z-30"
-              : "md:hidden flex flex-col h-screen justify-center to-[60%] bg-black backdrop-xl text-black items-center absolute top-0 left-0 right-0 text-white -translate-x-full transition-all duration-300 ease-in-out z-30"
+              ? "md:hidden flex flex-col h-screen justify-center to-[60%] bg-white backdrop-xl text-black items-center absolute top-0 left-0 right-0  translate-x-0 transition-all duration-300 ease-in-out z-30"
+              : "md:hidden flex flex-col h-screen justify-center to-[60%] bg-black backdrop-xl s-center absolute top-0 left-0 right-0 text-white -translate-x-full transition-all duration-300 ease-in-out z-30"
           }`}
         >
           {navItems.map((item, idx) => (
