@@ -78,42 +78,38 @@ const Page = () => {
   const handleOtpVerification = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
       if (!otpValue) {
         toast.error("Please enter the OTP");
         return;
       }
 
-      const res = await fetch("/api/verifyOtp", {
+      const formDataToSend = new FormData();
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("otp", otpValue);
+      formDataToSend.append("NIN", NIN);
+      if (cert) {
+        formDataToSend.append("cert", cert);
+      }
+
+      const res = await fetch("/api/agent/verifyOtp", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: formData.email,
-          otp: otpValue,
-          NIN: NIN,
-          cert: cert,
-        }),
+        body: formDataToSend,
       });
 
       const data = await res.json();
       console.log(data);
 
-      if (data?.message === "Account verified successfully") {
-        dispatch(setUser(data?.user));
-      }
       if (res.ok) {
-        toast.success("Account verified!(");
-        setIsLoading(false);
+        toast.success("Account verified!");
+        dispatch(setUser(data?.user));
       } else {
         toast.error(data.message || "Invalid OTP");
       }
-
-      if (data?.message === "Your OTP has expired") {
-        return <div className="text-primary">Request another OTP</div>;
-      }
     } catch (error) {
       console.error("Something went wrong", error);
-      setIsLoading(false);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
