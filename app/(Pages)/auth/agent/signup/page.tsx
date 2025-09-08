@@ -64,6 +64,7 @@ const Page = () => {
         toast.success("Signup successful. Check your email for OTP.");
         setOtp(true);
         setIsLoading(false);
+        
       } else {
         toast.error(data.message || "Signup failed");
       }
