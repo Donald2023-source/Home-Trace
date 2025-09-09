@@ -42,7 +42,7 @@ const Page = () => {
           {Plans.map((item, idx) => (
             <div
               key={idx}
-              className="h-full my-4 flex flex-col w-full gap-7  bg-white rounded shadow-md px-3 py-8"
+              className="h-full my-4 flex flex-col w-full gap-10  bg-white rounded shadow-md px-3 py-8"
             >
               <div className="h-full px-3 py-5 flex justify-between items-center gap-4 flex-col">
                 <div className="text-center">
@@ -76,10 +76,10 @@ const Page = () => {
                   )}
                 </div>
                 <Button
-                  className={`h-14 w-full cursor-pointer hover:scale-95 transition-all ${
+                  className={`h-14 w-full border cursor-pointer hover:scale-95 transition-all ${
                     item?.name === currentPlan &&
                     "bg-transparent text-black cursor-default hover:scale-100 boder-gray-300 hover:bg-transparent"
-                  }`}
+                  }`} 
                 >
                   Select Plan
                 </Button>
