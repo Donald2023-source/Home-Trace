@@ -6,11 +6,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Menu } from "lucide-react";
-const Navbar = () => {
+import { twMerge } from "tailwind-merge";
+
+const Navbar = ({ className }: { className?: string }) => {
   const navItems = [
     { name: "Home", href: "" },
-    { name: "About", href: "#about" },
-    { name: "Explore", href: "#explore" },
+    { name: "About", href: "/about" },
+    { name: "Explore", href: "/explore" },
     { name: "FAQ's", href: "#faqs" },
   ];
 
@@ -35,7 +37,12 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="absolute inset-0 bg-black/20 backdrop-blur-xl h-fit p-3 md:p-2 text-white z-20">
+    <div
+      className={twMerge(
+        "absolute inset-0  bg-black/20 backdrop-blur-xl h-fit p-3 md:p-2 text-white z-20",
+        className
+      )}
+    >
       <nav className="flex justify-between items-center max-w-6xl mx-auto w-full">
         <Link href={"/"}>
           <Image
@@ -50,7 +57,12 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-5">
           {navItems.map((item, idx) => (
             <Link
-              onClick={(e) => handleScroll(e, item?.href)}
+              onClick={(e) => {
+                if (item?.href?.startsWith("#")) {
+                  handleScroll(e, item?.href);
+                  return;
+                }
+              }}
               className="px-4 hover:text-gray-500 transition-all"
               key={idx}
               href={item?.href}
