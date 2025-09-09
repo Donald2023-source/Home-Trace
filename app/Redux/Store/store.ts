@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authSlice from "@/app/Redux/authSlice/authSlice"
+import authSlice from "@/app/Redux/authSlice/authSlice";
 import {
   persistStore,
   persistReducer,
@@ -13,11 +13,9 @@ import {
 } from "redux-persist";
 import createWebStorage from "redux-persist/es/storage/createWebStorage";
 
-
 export function createPersistStore(): WebStorage {
   const isServer = typeof window === "undefined";
 
-  // will returns our dummy server
   if (isServer) {
     return {
       getItem() {
@@ -35,21 +33,21 @@ export function createPersistStore(): WebStorage {
 }
 
 const storage =
-  typeof window !== "undefined"
-    ? createWebStorage("local")
-    : createPersistStore();
+  typeof window !== "undefined" ? createWebStorage("local") : createPersistStore();
 
 const persistConfig = {
   key: "home-trace",
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, authSlice);
+const rootReducer = combineReducers({
+  auth: authSlice,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    frentals: persistedReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -59,3 +57,7 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

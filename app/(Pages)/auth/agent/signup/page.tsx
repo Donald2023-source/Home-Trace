@@ -25,7 +25,7 @@ const Page = () => {
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isOtp, setOtp] = useState(true);
+  const [isOtp, setOtp] = useState(false);
   const [otpValue, setOtpValue] = useState("");
   const [NIN, setNIN] = useState("");
   const [cert, setCert] = useState<File | null>(null);
