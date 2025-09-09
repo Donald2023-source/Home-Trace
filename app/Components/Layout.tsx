@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const path = usePathname()
   return (
     <html suppressHydrationWarning lang="en">
       <body>
-        <Navbar />
+        <Navbar className={path.startsWith("/") ? "bg-transparent shadow text-black h-20 flex items-center" : ""} />
         <Provider store={store}>{children}</Provider>
       </body>
     </html>

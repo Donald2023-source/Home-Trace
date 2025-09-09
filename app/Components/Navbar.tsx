@@ -9,6 +9,7 @@ import { Menu } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
 const Navbar = ({ className }: { className?: string }) => {
+  const isAuthenticated = false;
   const navItems = [
     { name: "Home", href: "" },
     { name: "About", href: "/about" },
@@ -111,12 +112,16 @@ const Navbar = ({ className }: { className?: string }) => {
           >
             X
           </h2>
-          <Button className="bg-myPrimary text-black my-3 border-gray-500 px-4 py-2  cursor-pointer">
-            <Link href={"/auth"}>Sign up</Link>
-          </Button>
-          <Button className="text-white cursor-pointer px-4 py-2">
-            <Link href={"/auth"}>Sign in</Link>
-          </Button>
+          {isAuthenticated && (
+            <div className="flex items-center gap-8">
+              <Button className="bg-myPrimary  text-black my-3 border-gray-500 px-4 py-2  cursor-pointer">
+                <Link href={"/auth"}>Sign up</Link>
+              </Button>
+              <Button className="text-white cursor-pointer px-4 py-2">
+                <Link href={"/auth"}>Sign in</Link>
+              </Button>
+            </div>
+          )}
         </div>
       </nav>
     </div>
