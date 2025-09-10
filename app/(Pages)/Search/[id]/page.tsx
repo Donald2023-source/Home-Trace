@@ -27,6 +27,8 @@ const Page = () => {
     }
   }, [activeFilter]);
 
+  const products = []
+
   return (
     <div className="lg:mt-[7%] max-w-6xl mx-auto flex w-full items-center   mt-[18%]">
       <div className="w-full flex items-center ">
@@ -75,7 +77,7 @@ const Page = () => {
       </div>
 
       <div>
-        
+
       </div>
     </div>
   );
