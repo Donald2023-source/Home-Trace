@@ -36,7 +36,7 @@ const page = () => {
   ];
   return (
     <div className="w-full mx-auto">
-      <Navbar />
+        
       <Hero />
 
       <div className="max-w-6xl md:px-2 lg:px-1 mx-auto mt-10">

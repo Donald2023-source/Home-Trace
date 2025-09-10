@@ -7,16 +7,18 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import { usePathname } from "next/navigation";
 
 const Navbar = ({ className }: { className?: string }) => {
   const isAuthenticated = false;
   const navItems = [
     { name: "Home", href: "" },
-    { name: "About", href: "/about" },
-    { name: "Explore", href: "/explore" },
+    { name: "About", href: "#about" },
+    { name: "Explore", href: "#explore" },
     { name: "FAQ's", href: "#faqs" },
   ];
 
+  const path = usePathname();
   const [nav, setNav] = useState(false);
 
   const handleScroll = (
@@ -40,7 +42,7 @@ const Navbar = ({ className }: { className?: string }) => {
   return (
     <div
       className={twMerge(
-        "absolute inset-0  bg-black/20 backdrop-blur-xl h-fit p-3 md:p-2 text-white z-20",
+        "absolute inset-0   backdrop-blur-xl h-fit p-3 md:p-2 text-white z-20",
         className
       )}
     >
@@ -58,12 +60,7 @@ const Navbar = ({ className }: { className?: string }) => {
         <div className="hidden md:flex items-center space-x-5">
           {navItems.map((item, idx) => (
             <Link
-              onClick={(e) => {
-                if (item?.href?.startsWith("#")) {
-                  handleScroll(e, item?.href);
-                  return;
-                }
-              }}
+              onClick={(e) => handleScroll(e, item?.href)}
               className="px-4 hover:text-gray-500 transition-all"
               key={idx}
               href={item?.href}
@@ -74,7 +71,11 @@ const Navbar = ({ className }: { className?: string }) => {
         </div>
         {!isAuthenticated && (
           <div className="hidden md:flex items-center space-x-4">
-            <Button className="bg-myPrimary hover:text-white border text-black px-4 py-2  cursor-pointer">
+            <Button
+              className={`bg-myPrimary hover:text-white ${
+                path.startsWith("/") ? "text-white border" : ""
+              } py-2  cursor-pointer`}
+            >
               <Link href={"/auth"}>Sign up</Link>
             </Button>
             <Button className="text-white cursor-pointer px-4 py-2">
