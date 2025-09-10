@@ -18,7 +18,7 @@ const Hero = () => {
           </p>
           <fieldset className="bg-white flex items-center px-4 mx-auto my-7 py-2 md:w-[33%] w-[85%] rounded-full gap-10">
             <input
-              className="outline-none text-base pl-4 text-black h-full text-sm w-full"
+              className="outline-none pl-4 text-black h-full text-sm w-full"
               placeholder="Address, Zip/postal Code, Local government"
               type="text"
               name=""
