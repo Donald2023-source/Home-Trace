@@ -16,10 +16,17 @@ interface Props {
 
 const ProductCard = ({ item }: Props) => {
   return (
-    <div className="flex md:flex-row lg:flex-nowrap mx-auto md:flex-wrap flex-col md:gap-10 gap-5 md:justify-start justify-center items-center ">
+    <div
+      className="
+    flex flex-col items-center justify-center gap-5
+    md:flex-row md:flex-wrap md:justify-start md:gap-14
+    md:grid lg:grid-cols-3 md:grid-cols-2 lg:gap-10 lg:space-y-0
+    mx-auto
+  "
+    >
       {item?.map((item, idx: number) => (
         <div
-          className="lg:w-[23rem] md:w-[16rem] sm:w-[12rem] w-[19rem] lg:h-[23rem] md:h-[20rem]  hover:scale-95 transition-all cursor-pointer h-[23rem]  shadow-lg rounded-lg my-5"
+          className="lg:w-[23rem] md:w-[19rem] sm:w-[12rem] w-[19rem] lg:h-[23rem] md:h-[21rem]  hover:scale-95 transition-all cursor-pointer h-fit  shadow-lg rounded-lg my-5"
           key={idx}
         >
           <Image
@@ -27,7 +34,7 @@ const ProductCard = ({ item }: Props) => {
             alt="product"
             className=" h-auto mt-5 rounded-lg shadow-lg"
           />
-          <div className="p-1 flex flex-col p-2 items-start gap-2 w-full">
+          <div className="flex flex-col px-2 py-4 items-start gap-2 w-full">
             <div className="flex w-full justify-between items-center py-1">
               <h2 className="px-1 font-semibold">{item?.name}</h2>
               <Image src={verify} alt="verified" className="w-5 inline-block" />

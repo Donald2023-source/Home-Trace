@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Navbar
           className={
             path.startsWith("/Search")
-              ? "shadow bg-transparent text-black h-20 flex items-center"
+              ? "shadow bg-transparent text-black md:h-20 flex items-center"
               : "h-20 bg-black/20 flex items-center"
           }
         />
