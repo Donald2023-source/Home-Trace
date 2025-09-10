@@ -56,7 +56,7 @@ const Page = () => {
                 <p>{activeFilter ? activeFilter : "Property Type"}</p>
                 <ChevronDown />
                 {toggleFilter && (
-                  <div className="absolute top-20 shadow w-36 rounded-xl px-1">
+                  <div className="absolute top-16 shadow w-36 rounded-xl px-1">
                     {proertyTypeFilter.map((item, idx) => (
                       <span
                         onClick={() => handleActiveFilter(item)}
@@ -72,6 +72,10 @@ const Page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div>
+        
       </div>
     </div>
   );
