@@ -1,6 +1,4 @@
 "use client";
-import Dashboardheader from "@/app/Components/Dashboardheader";
-import Sidebar from "@/app/Components/Sidebar";
 import { RootState } from "@/app/Redux/Store/store";
 import React from "react";
 import { useSelector } from "react-redux";

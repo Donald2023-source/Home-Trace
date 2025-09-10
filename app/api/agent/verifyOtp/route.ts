@@ -68,9 +68,9 @@ export async function POST(req: NextRequest) {
         NIN: User.NIN,
       },
     });
-  } catch (error: any) {
+  } catch (error: Error | unknown) {
     return NextResponse.json(
-      { message: error.message || "Server error" },
+      { message: error || "Server error" },
       { status: 500 }
     );
   }

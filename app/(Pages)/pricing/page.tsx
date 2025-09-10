@@ -61,8 +61,8 @@ const Page = () => {
 
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col items-center gap-4">
-                    {item?.benefits.map((b) => (
-                      <span className="flex items-center gap-5">
+                    {item?.benefits.map((b, idx) => (
+                      <span key={idx} className="flex items-center gap-5">
                         <Check />
                         <p>{b}</p>
                       </span>
@@ -79,7 +79,7 @@ const Page = () => {
                   className={`h-14 w-full border cursor-pointer hover:scale-95 transition-all ${
                     item?.name === currentPlan &&
                     "bg-transparent text-black cursor-default hover:scale-100 boder-gray-300 hover:bg-transparent"
-                  }`} 
+                  }`}
                 >
                   Select Plan
                 </Button>
