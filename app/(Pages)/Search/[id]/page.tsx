@@ -1,11 +1,13 @@
 "use client";
 import { ChevronDown, ChevronLeft, Search } from "lucide-react";
 import { useParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const Page = () => {
   const params = useParams();
   const [toggleFilter, setToggleFilter] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("");
   const proertyTypeFilter = [
     "Bungalow",
     "Townhouse",
@@ -13,11 +15,20 @@ const Page = () => {
     "Condo",
     "Tiny House",
   ];
+
+  const handleActiveFilter = (filter: string) => {
+    setActiveFilter(filter);
+  };
+
+  useEffect(() => {
+    if (activeFilter) {
+      console.log("Active filter changed:", activeFilter);
+      toast.success(activeFilter);
+    }
+  }, [activeFilter]);
+
   return (
-    <div
-      onClick={() => setToggleFilter(false)}
-      className="lg:mt-[7%] max-w-6xl border mx-auto flex w-full items-center   mt-[18%]"
-    >
+    <div className="lg:mt-[7%] max-w-6xl mx-auto flex w-full items-center   mt-[18%]">
       <div className="w-full flex items-center ">
         <ChevronLeft />
         <div className="w-full flex items-center">
@@ -34,20 +45,21 @@ const Page = () => {
 
           <div>
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-2 border p-2 rounded-lg cursor-pointer">
+              <span className="flex text-sm items-center gap-4 border p-2 rounded-lg cursor-pointer">
                 <p>Price</p>
                 <ChevronDown />
               </span>
               <span
                 onClick={() => setToggleFilter(!toggleFilter)}
-                className="flex relative items-center gap-2 border p-2 rounded-lg cursor-pointer"
+                className="flex text-sm relative items-center gap-4 border p-2 rounded-lg cursor-pointer"
               >
-                <p>Property Type</p>
+                <p>{activeFilter ? activeFilter : "Property Type"}</p>
                 <ChevronDown />
                 {toggleFilter && (
                   <div className="absolute top-20 shadow w-36 rounded-xl px-1">
                     {proertyTypeFilter.map((item, idx) => (
                       <span
+                        onClick={() => handleActiveFilter(item)}
                         className="py-2 flex flex-col transition-all hover:bg-primary/40 px-1 hover:text-white rounded hover:border-r-4 border-primary"
                         key={idx}
                       >
