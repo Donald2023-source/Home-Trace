@@ -72,15 +72,16 @@ const Navbar = ({ className }: { className?: string }) => {
             </Link>
           ))}
         </div>
-
-        <div className="hidden md:flex items-center space-x-4">
-          <Button className="bg-myPrimary text-white border border-gray-500 px-4 py-2  cursor-pointer">
-            <Link href={"/auth"}>Sign up</Link>
-          </Button>
-          <Button className="text-white cursor-pointer px-4 py-2">
-            <Link href={"/auth"}>Sign in</Link>
-          </Button>
-        </div>
+        {!isAuthenticated && (
+          <div className="hidden md:flex items-center space-x-4">
+            <Button className="bg-myPrimary hover:text-white border text-black px-4 py-2  cursor-pointer">
+              <Link href={"/auth"}>Sign up</Link>
+            </Button>
+            <Button className="text-white cursor-pointer px-4 py-2">
+              <Link href={"/auth"}>Sign in</Link>
+            </Button>
+          </div>
+        )}
         <Menu
           onClick={() => setNav(true)}
           className="md:hidden cursor-pointer hover:scale-90 transition-all"
