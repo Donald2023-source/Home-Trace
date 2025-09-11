@@ -9,6 +9,7 @@ import img3 from "@/public/Frame 18762 (1).png";
 import { motion } from "framer-motion";
 import ProductCard from "@/app/Components/ProductCard";
 import Link from "next/link";
+import Navbar from "@/app/Components/Navbar";
 
 const Page = () => {
   const params = useParams();
@@ -145,7 +146,9 @@ const Page = () => {
   ];
 
   return (
-    <div className="lg:mt-[7%] max-w-6xl mx-auto flex flex-col w-full items-center mt-[18%]">
+   <div>
+    <Navbar className="text-black" />
+     <div className="lg:mt-[7%] max-w-6xl mx-auto flex flex-col w-full items-center mt-[18%]">
       <div className="w-full flex items-center md:px-4 px-4 lg:px-0">
         <ChevronLeft className="md:block hidden" />
         <div className="w-full flex items-center md:flex-col flex-col lg:flex-row">
@@ -206,6 +209,7 @@ const Page = () => {
         ></Link>
       </div>
     </div>
+   </div>
   );
 };
 

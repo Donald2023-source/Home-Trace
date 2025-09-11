@@ -5,19 +5,12 @@ import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store/store";
 import Layout from "./Components/Layout";
+import Navbar from "./Components/Navbar";
 
-// Load Roboto for body text
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"], // adjust weights as needed
-});
-
-// Load Poppins for headings
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -32,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <Layout>
+      
       <Toaster position="top-right" />
       {children}
     </Layout>

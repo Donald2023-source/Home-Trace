@@ -9,13 +9,15 @@ export default function Dashboardlayout({
   children: React.ReactNode;
 }) {
   const path = usePathname();
+
   return (
-    <div className="flex ">
-      {path === "/home" && (
+    <div className="flex">
+      {path === "/dashboard/home" && (
         <section className="w-[20%] h-82 border">
           <Sidebar />
         </section>
       )}
+
       <div className="flex-1">
         <section className="border p-3">
           <Dashboardheader />

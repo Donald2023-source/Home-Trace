@@ -12,6 +12,7 @@ import Testimonial from "./Components/Testimonial";
 import Faq from "./Components/Faq";
 import Footer from "./Components/Footer";
 import { motion } from "framer-motion";
+import Navbar from "./Components/Navbar";
 const page = () => {
   const Products = [
     {
@@ -35,7 +36,7 @@ const page = () => {
   ];
   return (
     <div className="w-full mx-auto">
-        
+      <Navbar />
       <Hero />
 
       <div className="max-w-6xl md:px-2 lg:px-1 mx-auto mt-10">
