@@ -2,6 +2,7 @@
 import Dashboardheader from "@/app/Components/Dashboardheader";
 import Sidebar from "@/app/Components/Sidebar";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Dashboardlayout({
   children,
@@ -9,20 +10,21 @@ export default function Dashboardlayout({
   children: React.ReactNode;
 }) {
   const path = usePathname();
+  const [isVisible, setIsVisible] = useState(false)
 
   return (
-    <div className="flex">
-      {path === "/dashboard/home" && (
-        <section className="w-[20%] h-82 border">
+    <div className="flex h-screen">
+      {path === "/home" && (
+        <section className="lg:w-[18%] bg-white w-[50%] h-full fixed shadow">
           <Sidebar />
         </section>
       )}
 
-      <div className="flex-1">
+      <div className="lg:ml-[18%] w-full">
         <section className="border p-3">
           <Dashboardheader />
         </section>
-        <div>{children}</div>
+        <div className="p-3">{children}</div>
       </div>
     </div>
   );
