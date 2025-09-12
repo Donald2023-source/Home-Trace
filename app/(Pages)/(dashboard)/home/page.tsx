@@ -50,14 +50,22 @@ const Page = () => {
         </p>
       </div>
       <div className="flex items-center">
-        {cardItems.map((item) => (
-          <div className="flex items-center m-2 p-3 gap-8 rounded w-[35%] h-28 justify-between bg-white">
+        {cardItems.map((item, idx) => (
+          <div
+            key={idx}
+            className="flex items-center m-2 p-3 gap-8 rounded w-[35%] h-28 justify-between bg-white"
+          >
             <div className="flex flex-col">
               <p className="font-medium">{item?.name}</p>
               <p className="text-xl font-bold">{item?.number}</p>
               <p className="text-xs">{item?.desc}</p>
             </div>
-            <span className="p-2 h-10 flex items-center justify-center w-10 rounded-md" style={{backgroundColor: item?.color}}>{item?.icon}</span>
+            <span
+              className="p-2 h-10 flex items-center justify-center w-10 rounded-md"
+              style={{ backgroundColor: item?.color }}
+            >
+              {item?.icon}
+            </span>
           </div>
         ))}
       </div>

@@ -23,26 +23,27 @@ const Sidebar = () => {
   return (
     <div>
       <div className="flex flex-col h-full py-3 w-full  px-8 rounded">
-      <div className="flex items-center gap-4">
-        <Image className="h-10 w-auto" src={logo} alt="logo" />
-        <h4 className="font-bold">Home Trace</h4>
+        <div className="flex items-center gap-4">
+          <Image className="h-10 w-auto" src={logo} alt="logo" />
+          <h4 className="font-bold">Home Trace</h4>
+        </div>
+        <div className="flex flex-col gap-8 py-6 ">
+          {sideNavItems.map((item, idx) => (
+            <Link
+              key={idx}
+              className={`flex items-center gap-3 ${
+                item.href === path
+                  ? "px-4 py-2 bg-primary/10 text-primary font-medium rounded-md border-r-4 border-primary "
+                  : "hover:px-4 hover:py-2 hover:bg-primary/10 transition-all hover:text-primary hover:font-medium hover:rounded-md hover:border-r-4 hover:border-primary "
+              }`}
+              href={item?.href}
+            >
+              <Image className="h-6 w-auto" src={item?.icon} alt="icon" />
+              {item?.name}
+            </Link>
+          ))}
+        </div>
       </div>
-      <div className="flex flex-col gap-8 py-6 ">
-        {sideNavItems.map((item) => (
-          <Link
-            className={`flex items-center gap-3 ${
-              item.href === path
-                ? "px-4 py-2 bg-primary/10 text-primary font-medium rounded-md border-r-4 border-primary "
-                : "hover:px-4 hover:py-2 hover:bg-primary/10 transition-all hover:text-primary hover:font-medium hover:rounded-md hover:border-r-4 hover:border-primary "
-            }`}
-            href={item?.href}
-          >
-            <Image className="h-6 w-auto" src={item?.icon} alt="icon" />
-            {item?.name}
-          </Link>
-        ))}
-      </div>
-    </div>
     </div>
   );
 };
