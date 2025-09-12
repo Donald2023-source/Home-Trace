@@ -21,10 +21,10 @@ export default function Dashboardlayout({
       )}
 
       <div className="lg:ml-[18%] w-full">
-        <section className="border p-3">
+        <section className="p-3 md:block hidden">
           <Dashboardheader />
         </section>
-        <div className="p-3">{children}</div>
+        <div className="p-3 bg-primary/2">{children}</div>
       </div>
     </div>
   );
