@@ -67,6 +67,6 @@ export const POST = async (req: NextRequest) => {
       message: "Something went wrong",
       error: err,
       success: false,
-    });
+    }, { status: 500});
   }
 };

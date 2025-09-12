@@ -50,7 +50,7 @@ const Page = () => {
         return;
       }
 
-      const res = await fetch("/api/signup", {
+      const res = await fetch("/api/user/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -58,7 +58,7 @@ const Page = () => {
 
       const data = await res.json();
       console.log(data);
-      if (res.ok) {
+      if (data.success) {
         toast.success("Signup successful. Check your email for OTP.");
         setOtp(true);
         setIsLoading(false);
@@ -82,7 +82,7 @@ const Page = () => {
         return;
       }
 
-      const res = await fetch("/api/verifyOtp", {
+      const res = await fetch("/api/user/verifyOtp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email, otp: otpValue }),
@@ -96,7 +96,7 @@ const Page = () => {
         dispatch(setUser(data?.user));
       }
       if (res.ok) {
-        toast.success("Account verified!(");
+        toast.success("Account verified!");
         setIsLoading(false);
       } else {
         toast.error(data.message || "Invalid OTP");

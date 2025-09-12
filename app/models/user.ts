@@ -1,21 +1,13 @@
-import mongoose, {
-  Schema,
-  Document,
-  TypeExpressionOperatorReturningBoolean,
-} from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
   fullName: string;
   email: string;
   password: string;
   isVerified: boolean;
-  otpExpiry: string;
-  otp: string;
+  otpExpiry?: string;
+  otp?: string;
   role: string;
-  NIN: number;
-  cert: File;
-  verifiedAgent: boolean;
-  plan: string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -25,15 +17,7 @@ const UserSchema = new Schema<IUser>({
   isVerified: { type: Boolean, required: true },
   otpExpiry: { type: String },
   otp: { type: String },
-  role: { type: String, enum: ["user", "agent", "admin"], default: "user" },
-  NIN: { type: Number, unique: true },
-  cert: { type: String },
-  verifiedAgent: { type: Boolean, default: false },
-  plan: {
-    type: String,
-    enum: ["Basic", "Standard", "Premium"],
-    default: "Basic",
-  },
+  role: { type: String, enum: ["user", "admin"], default: "user" },
 });
 
 export default mongoose.models.User ||
