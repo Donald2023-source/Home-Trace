@@ -67,19 +67,19 @@ const Page = () => {
 
         <Menu />
       </div>
-      <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center gap-4">
         {cardItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex md:text-base text-xs items-center m-2 p-3 gap-8 rounded-xl w-full md:w-[35%] h-28 justify-between bg-white"
+            className="flex md:text-base text-xs items-center m-2 p-3 gap-8 rounded-xl w-full h-28 md:justify-between bg-white"
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col w-[90%] border">
               <p className="font-medium">{item?.name}</p>
               <p className="text-xl font-bold">{item?.number}</p>
-              <p className="text-xs">{item?.desc}</p>
+              <p className="text-xs">{item?.desc}</p>   
             </div>
             <span
-              className="p-2 h-10 flex items-center justify-center w-10 rounded-md"
+              className="p-2 md:h-10 h-7 border  flex items-center justify-center w-7 md:w-10 rounded-md"
               style={{ backgroundColor: item?.color }}
             >
               {item?.icon}

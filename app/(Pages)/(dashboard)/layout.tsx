@@ -21,7 +21,7 @@ export default function Dashboardlayout({
       )}
 
       <div className="lg:ml-[18%] w-full">
-        <section className=" shadow-xs rounded md:block hidden">
+        <section className="p-3 shadow-xs rounded md:block hidden">
           <Dashboardheader />
         </section>
         <div className="p-3 bg-primary/2">{children}</div>
