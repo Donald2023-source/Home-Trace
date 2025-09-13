@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/app/Redux/Store/store";
-import { Bookmark, Clock3, Eye, HousePlus } from "lucide-react";
+import { Bookmark, Clock3, Eye, HousePlus, Menu, Search } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -40,20 +40,38 @@ const Page = () => {
   console.log(user);
   return (
     <div>
-      <div>
+      <div className="md:px-4 md:py-4 w-full border">
         <h2 className="text-2xl font-bold tracking-tight">
           Welcome back, {firstName}!
         </h2>
-        <p className="text-sm text-gray-500 py-1">
+        <p className="text-xs md:text-sm border text-gray-500 py-1">
           Discover your perfect home from thousands of verified listings across
           Nigeria.
         </p>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-8 py-3 w-full">
+        <fieldset className=" flex items-center bg-white w-[90%] border py-1 px-4 gap-4 rounded-full">
+          <input
+            className="outline-none pl-4 text-black h-full text-sm w-full"
+            placeholder="Search"
+            type="text"
+            name=""
+            id=""
+          />
+          <Search
+            size={35}
+            className="bg-black p-2 h-8 w-8 flex items-center justify-center rounded-full"
+            color="white"
+          />
+        </fieldset>
+
+        <Menu />
+      </div>
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
         {cardItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center m-2 p-3 gap-8 rounded w-[35%] h-28 justify-between bg-white"
+            className="flex md:text-base text-xs items-center m-2 p-3 gap-8 rounded-xl w-full md:w-[35%] h-28 justify-between bg-white"
           >
             <div className="flex flex-col">
               <p className="font-medium">{item?.name}</p>

@@ -10,18 +10,18 @@ export default function Dashboardlayout({
   children: React.ReactNode;
 }) {
   const path = usePathname();
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div className="flex h-screen">
       {path === "/home" && (
-        <section className="lg:w-[18%] bg-white w-[50%] h-full fixed shadow">
+        <section className="lg:w-[18%] hidden bg-white w-[50%] h-full fixed shadow">
           <Sidebar />
         </section>
       )}
 
       <div className="lg:ml-[18%] w-full">
-        <section className="p-3 md:block hidden">
+        <section className=" shadow-xs rounded md:block hidden">
           <Dashboardheader />
         </section>
         <div className="p-3 bg-primary/2">{children}</div>
