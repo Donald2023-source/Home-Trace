@@ -40,7 +40,7 @@ const Page = () => {
   console.log(user);
   return (
     <div>
-      <div className="md:px-4 md:py-4 w-full border">
+      <div className="md:px-4 md:py-4 w-full">
         <h2 className="text-2xl font-bold tracking-tight">
           Welcome back, {firstName}!
         </h2>
@@ -71,15 +71,15 @@ const Page = () => {
         {cardItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex md:text-base text-xs items-center m-2 p-3 gap-8 rounded-xl w-full h-28 md:justify-between bg-white"
+            className="flex md:text-base shadow-md text-xs items-center m-2 p-3 rounded-xl w-full h-28 md:justify-between bg-white"
           >
-            <div className="flex flex-col w-[90%] border">
+            <div className="flex flex-col w-full">
               <p className="font-medium">{item?.name}</p>
               <p className="text-xl font-bold">{item?.number}</p>
-              <p className="text-xs">{item?.desc}</p>   
+              <p className="text-xs">{item?.desc}</p>
             </div>
             <span
-              className="p-2 md:h-10 h-7 border  flex items-center justify-center w-7 md:w-10 rounded-md"
+              className="p-2 md:h-10 h-7  flex items-center justify-center w-7 md:w-10 rounded-md"
               style={{ backgroundColor: item?.color }}
             >
               {item?.icon}
