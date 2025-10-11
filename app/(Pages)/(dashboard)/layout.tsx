@@ -15,16 +15,16 @@ export default function Dashboardlayout({
   return (
     <div className="flex h-screen">
       {path === "/home" && (
-        <section className="lg:w-[18%] hidden bg-white w-[50%] h-full fixed shadow">
+        <section className="lg:w-[18%] bg-white w-[50%] h-full fixed shadow">
           <Sidebar />
         </section>
       )}
 
       <div className="lg:ml-[18%] w-full">
-        <section className="p-3 shadow-xs rounded md:block hidden">
+        <section className="p-3 mt-6 shadow-xs rounded md:block hidden">
           <Dashboardheader />
         </section>
-        <div className="p-3 bg-[#E1DDEC]">{children}</div>
+        <div className="p-3 bg-[#e1ddec82]">{children}</div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const Navbar = ({ className }: { className?: string }) => {
   const navItems = [
     { name: "Home", href: "" },
     { name: "About", href: "#about" },
-    { name: "Explore", href: "#explore" },
+    { name: "Explore", href: "/search" },
     { name: "FAQ's", href: "#faqs" },
   ];
 

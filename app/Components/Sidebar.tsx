@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div className="flex flex-col h-full py-3 w-full  px-8 rounded">
+      <div className="flex flex-col h-full py-3 w-full mt-6  px-8 rounded">
         <div className="flex items-center gap-4">
           <Image className="h-10 w-auto" src={logo} alt="logo" />
           <h4 className="font-bold">Home Trace</h4>

@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/Store/store";
 import Layout from "./Components/Layout";
 import Navbar from "./Components/Navbar";
+import NextTopLoader from "nextjs-toploader";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -25,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <Layout>
-      
+      <NextTopLoader />
       <Toaster position="top-right" />
       {children}
     </Layout>

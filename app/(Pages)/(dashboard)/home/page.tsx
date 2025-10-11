@@ -49,8 +49,8 @@ const Page = () => {
           Nigeria.
         </p>
       </div>
-      <div className="flex items-center gap-8 py-3 w-full">
-        <fieldset className=" flex items-center bg-white w-[90%] border py-1 px-4 gap-4 rounded-full">
+      <div className="flex md:hidden  items-center gap-8 py-3 w-full">
+        <fieldset className=" flex items-center bg-white w-[93%] border py-1 px-4 gap-4 rounded-full">
           <input
             className="outline-none pl-4 text-black h-full text-sm w-full"
             placeholder="Search"
@@ -67,11 +67,11 @@ const Page = () => {
 
         <Menu />
       </div>
-      <div className="grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center gap-4">
+      <div className="grid md:grid-cols-4 grid-cols-2 place-content-center place-items-center">
         {cardItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex md:text-base shadow-md text-xs items-center m-2 p-3 rounded-xl w-full h-28 md:justify-between bg-white"
+            className="flex md:text-base shadow-md shadow-black/10 text-xs items-center m-2 p-3 rounded-xl w-full h-28 md:justify-between bg-white"
           >
             <div className="flex flex-col w-full">
               <p className="font-medium">{item?.name}</p>
