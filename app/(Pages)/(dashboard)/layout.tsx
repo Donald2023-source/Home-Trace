@@ -15,7 +15,13 @@ export default function Dashboardlayout({
   return (
     <div className="flex h-screen">
       {path === "/home" && (
-        <section className="lg:w-[18%] bg-white w-[50%] h-full fixed shadow">
+        <section
+          className={
+            isVisible
+              ? "bg-white w-[50%] h-full fixed shadow"
+              : "lg:w-[18%] lg:block hidden bg-white w-[50%] h-full fixed shadow"
+          }
+        >
           <Sidebar />
         </section>
       )}
