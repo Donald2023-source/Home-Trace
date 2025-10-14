@@ -118,9 +118,18 @@ const Page = () => {
       </div>
 
       <div className="my-3">
-        <div className="flex items-center justify-between p-2">
+        <div className="flex items-center justify-between md:px-6">
           <h2 className="text-2xl font-bold">New Listings</h2>
-          <p className="text-[#321876] font-semibold underline tracking-tight">
+          <p className="text-[#321876] cursor-pointer font-semibold underline tracking-tight">
+            View all
+          </p>
+        </div>
+        <DProductCard item={Products} />
+      </div>
+      <div className="mt-10">
+        <div className="flex items-center justify-between w-[90%] px-4 mx-auto md:px-6">
+          <h2 className="text-2xl font-bold">Saved Properties</h2>
+          <p className="text-[#321876] cursor-pointer font-semibold underline tracking-tight">
             View all
           </p>
         </div>

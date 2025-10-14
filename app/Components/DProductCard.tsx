@@ -24,15 +24,12 @@ const DProductCard = ({ item }: Props) => {
   return (
     <div
       className="
-    flex flex-col items-center justify-center gap-5
-    md:flex-row md:flex-wrap md:justify-start md:gap-14
-    md:grid lg:grid-cols-3 md:grid-cols-2 lg:gap-10 lg:space-y-0
-    mx-auto
+   grid md:grid-cols-3 place-content-center place-items-center
   "
     >
       {item?.map((item, idx: number) => (
         <div
-          className="lg:w-[23rem] md:w-[19rem] sm:w-[12rem] w-[19rem] lg:h-[25rem] md:h-[22rem] transition-all h-fit  shadow-lg rounded-lg my-5"
+          className="lg:w-[23rem] md:w-[19rem] sm:w-[12rem]  lg:h-[25rem] md:h-[22rem] transition-all h-fit  shadow-lg rounded-lg my-1"
           key={idx}
         >
           <div className="relative">
@@ -40,6 +37,7 @@ const DProductCard = ({ item }: Props) => {
               src={item?.img}
               alt="product"
               className=" h-auto mt-5 rounded-lg shadow-lg"
+              priority
             />
             <span
               onClick={() => AddToSaved(item?.name)}
