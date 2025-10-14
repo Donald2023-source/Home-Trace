@@ -30,7 +30,7 @@ export default function Dashboardlayout({
         <section className="p-3 mt-6 shadow-xs rounded md:block hidden">
           <Dashboardheader />
         </section>
-        <div className="p-3 bg-[#e1ddec82]">{children}</div>
+        <div className="p-3 bg-[#FAFAFA]">{children}</div>
       </div>
     </div>
   );

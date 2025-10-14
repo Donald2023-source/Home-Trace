@@ -3,6 +3,11 @@ import { RootState } from "@/app/Redux/Store/store";
 import { Bookmark, Clock3, Eye, HousePlus, Menu, Search } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
+import img1 from "@/public/Frame 18762.png";
+import img2 from "@/public/Frame 18762 (2).png";
+import img3 from "@/public/Frame 18762 (1).png";
+import ProductCard from "@/app/Components/ProductCard";
+import DProductCard from "@/app/Components/DProductCard";
 
 const Page = () => {
   const cardItems = [
@@ -35,6 +40,30 @@ const Page = () => {
       color: "#13092E",
     },
   ];
+
+  const Products = [
+    {
+      name: "4-Bedroom Duplex",
+      location: "Rayfield Resort Road, Plateau state",
+      price: 2500000,
+      img: img1,
+      soldOut: false,
+    },
+    {
+      name: "3-plot of Land",
+      location: "Gugurat Junction, Plateau state",
+      price: 320000000,
+      img: img2,
+      soldOut: false,
+    },
+    {
+      name: "Self Contain Apartment",
+      location: "Rayfield Resort Road, Plateau state",
+      price: 75000000,
+      img: img3,
+      soldOut: true,
+    },
+  ];
   const user = useSelector((state: RootState) => state.auth.user);
   const firstName = user?.fullName?.trim().split(" ")[0] || "";
   console.log(user);
@@ -44,7 +73,7 @@ const Page = () => {
         <h2 className="text-2xl font-bold tracking-tight">
           Welcome back, {firstName}!
         </h2>
-        <p className="text-xs md:text-sm border text-gray-500 py-1">
+        <p className="text-xs md:text-sm  text-gray-500 py-1">
           Discover your perfect home from thousands of verified listings across
           Nigeria.
         </p>
@@ -71,7 +100,7 @@ const Page = () => {
         {cardItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex md:text-base shadow-md text-xs items-center m-2 p-3 rounded-xl w-full h-28 md:justify-between bg-white"
+            className="flex md:text-base shadow text-xs items-center m-2 p-3 rounded-xl w-full h-28 md:justify-between bg-white"
           >
             <div className="flex flex-col w-full">
               <p className="font-medium">{item?.name}</p>
@@ -86,6 +115,16 @@ const Page = () => {
             </span>
           </div>
         ))}
+      </div>
+
+      <div className="my-3">
+        <div className="flex items-center justify-between p-2">
+          <h2 className="text-2xl font-bold">New Listings</h2>
+          <p className="text-[#321876] font-semibold underline tracking-tight">
+            View all
+          </p>
+        </div>
+        <DProductCard item={Products} />
       </div>
     </div>
   );
