@@ -118,7 +118,7 @@ const Page = () => {
       </div>
 
       <div className="my-3">
-        <div className="flex items-center justify-between md:px-6">
+        <div className="flex items-center justify-between w-[90%] px-4 mx-auto md:px-6">
           <h2 className="text-2xl font-bold">New Listings</h2>
           <p className="text-[#321876] cursor-pointer font-semibold underline tracking-tight">
             View all
