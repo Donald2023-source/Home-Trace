@@ -10,6 +10,7 @@ import img from "@/public/Vector (5).png";
 import { Products } from "@/app/data/Products";
 import PriceFormatter from "@/app/Components/PriceFormatter";
 import img2 from "@/public/material-symbols_verified.png";
+import { Button } from "@/components/ui/button";
 const Page = () => {
   const user = useSelector((state: RootState) => state?.auth.user);
   const firstName = user?.fullName?.trim().split(" ")[0] || "";
@@ -97,23 +98,29 @@ const Page = () => {
           </div>
         </div>
 
-        <div>
+        <div className="bg-white">
           <div className="md:px-4  md:py-4 w-full">
             <div className="flex items-center gap-10">
               <p
+                onClick={() => setTab("Overview")}
                 className={`border-b cursor-pointer w-2/3 py-1 text-center font-semibold ${
                   tab === "Overview" && "border-b-2  border-[#2C1669]"
                 }`}
               >
                 Overview
               </p>
-              <p className="flex-1 border-b cursor-pointer py-1 text-center font-semibold">
+              <p
+                onClick={() => setTab("Video Tour")}
+                className={`border-b cursor-pointer  flex-1 py-1 text-center font-semibold ${
+                  tab === "Video Tour" && "border-b-2  border-[#2C1669]"
+                }`}
+              >
                 Video Tour
               </p>
             </div>
           </div>
 
-          <div className="w-2/3 px-4">
+          <div className="w-2/3 py-4 px-4">
             {tab === "Overview" && (
               <div>
                 <span className="flex items-center p w-[40%] justify-between">
@@ -125,7 +132,7 @@ const Page = () => {
                   />
                 </span>
 
-                <div className=" w-[40%] flex flex-col gap-4 my-4">
+                <div className=" w-[35%] flex flex-col gap-4 my-2">
                   <span className="flex items-center gap-2">
                     <MapPin />
                     <p>{matchProducts?.location}</p>
@@ -133,11 +140,15 @@ const Page = () => {
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-2">
                       <Bed />
-                      <p>{matchProducts?.bedrooms} Bedrooms</p>
+                      <p className="text-black/50 text-sm">
+                        {matchProducts?.bedrooms} Bedrooms
+                      </p>
                     </span>
                     <span className="flex items-center gap-2">
                       <Bath />
-                      <p>{matchProducts?.bathrooms} Bathrooms</p>
+                      <p className="text-black/50 text-sm">
+                        {matchProducts?.bathrooms} Bathrooms
+                      </p>
                     </span>
                   </div>
                 </div>
@@ -147,6 +158,36 @@ const Page = () => {
                 </p>
               </div>
             )}
+          </div>
+
+          <div className="flex justify-between gap-4 md:px-4  md:py-4 w-full">
+            <span className="flex h-fit flex-col rounded-xl w-2/3 gap-1 p-2 bg-[#EBE8F3]">
+              <p>Build Cost</p>
+              <PriceFormatter
+                className="text-2xl"
+                amount={matchProducts?.buildCost ?? 0}
+              />
+            </span>
+            <div className="flex-1 mx-auto flex items-center justify-center">
+              <div className="w-[60%] flex flex-col gap-1 py-2 shadow rounded-xl items-center">
+                {matchProducts?.agent?.map((item, idx) => (
+                  <div className="flex flex-col gap-2 ">
+                    <Image src={item?.profileImg} alt="agent" />
+                    <div className="flex items-center gap-2 py-1">
+                      <h2 className="font-semibold">{item?.name}</h2>
+                      <Image
+                        src={img2}
+                        alt="verified"
+                        className="w-5 inline-block"
+                      />
+                    </div>
+                    <Button className="bg-[#C1B8D9] w-full text-[#2C1669]">
+                      Contact Agent
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
