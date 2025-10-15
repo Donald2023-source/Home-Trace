@@ -152,22 +152,24 @@ const Page = () => {
                     </span>
                   </div>
                 </div>
-
-                <p className="py-2 text-black/50 w-[90%] leading-7">
-                  {matchProducts?.desc}
-                </p>
               </div>
             )}
           </div>
 
           <div className="flex justify-between gap-4 md:px-4  md:py-4 w-full">
-            <span className="flex h-fit flex-col rounded-xl w-2/3 gap-1 p-2 bg-[#EBE8F3]">
-              <p>Build Cost</p>
-              <PriceFormatter
-                className="text-2xl"
-                amount={matchProducts?.buildCost ?? 0}
-              />
-            </span>
+            <div className="w-2/3">
+              <p className="py-2 text-black/50 w-[90%] leading-7">
+                {matchProducts?.desc}
+              </p>
+              <span className="flex h-fit flex-col rounded-xl w-2/3 gap-1 p-2 bg-[#EBE8F3]">
+                <p>Build Cost</p>
+                <PriceFormatter
+                  className="text-2xl"
+                  amount={matchProducts?.buildCost ?? 0}
+                />
+              </span>
+            </div>
+
             <div className="flex-1 mx-auto flex items-center justify-center">
               <div className="w-[60%] flex flex-col gap-1 py-2 shadow rounded-xl items-center">
                 {matchProducts?.agent?.map((item, idx) => (
