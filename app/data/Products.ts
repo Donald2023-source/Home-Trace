@@ -2,6 +2,16 @@ import img1 from "@/public/Frame 18762.png";
 import img2 from "@/public/Frame 18762 (2).png";
 import img3 from "@/public/Frame 18762 (1).png";
 import img4 from "@/public/Rectangle 190.png";
+import {
+  Droplets,
+  Hospital,
+  Kanban,
+  Landmark,
+  ShieldCheck,
+  Store,
+  Trash,
+  Zap,
+} from "lucide-react";
 export const Products = [
   {
     name: "4-Bedroom Duplex",
@@ -15,6 +25,18 @@ export const Products = [
     soldOut: false,
     bedrooms: 3,
     bathrooms: 4,
+    amenities: [
+      { name: "Water Supply", icon: Droplets },
+      { name: "Constant Electricity", icon: Zap },
+      { name: "Waste Disposal", icon: Trash },
+      { name: "Good roads", icon: Kanban },
+      { name: "Security", icon: ShieldCheck },
+    ],
+    services: [
+      { name: "Hospitals", icon: Hospital },
+      { name: "Supermarkets", icon: Store },
+      { name: "Bank", icon: Landmark },
+    ],
   },
   {
     name: "3-plot of Land",
@@ -28,6 +50,18 @@ export const Products = [
     soldOut: false,
     bedrooms: 4,
     bathrooms: 5,
+    amenities: [
+      { name: "Water Supply", icon: Droplets },
+      { name: "Constant Electricity", icon: Zap },
+      { name: "Waste Disposal", icon: Trash },
+      { name: "Good roads", icon: Kanban },
+      { name: "Security", icon: ShieldCheck },
+    ],
+    services: [
+      { name: "Hospitals", icon: Hospital },
+      { name: "Supermarkets", icon: Store },
+      { name: "Bank", icon: Landmark },
+    ],
   },
   {
     name: "Self Contain Apartment",
@@ -41,5 +75,17 @@ export const Products = [
     soldOut: true,
     bedrooms: 7,
     bathrooms: 8,
+    amenities: [
+      { name: "Water Supply", icon: Droplets },
+      { name: "Constant Electricity", icon: Zap },
+      { name: "Waste Disposal", icon: Trash },
+      { name: "Good roads", icon: Kanban },
+      { name: "Security", icon: ShieldCheck },
+    ],
+    services: [
+      { name: "Hospitals", icon: Hospital },
+      { name: "Supermarkets", icon: Store },
+      { name: "Bank", icon: Landmark },
+    ],
   },
 ];

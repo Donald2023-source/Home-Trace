@@ -191,6 +191,37 @@ const Page = () => {
               </div>
             </div>
           </div>
+
+          <div>
+            <h2 className="font-semibold text-xl py-3">Amenities</h2>
+            <div className="text-black flex flex-col gap-4">
+              {matchProducts?.amenities?.map((item, idx) => (
+                <div
+                  className="flex items-center bg-[#EBE8F3] px-3 gap-2 py-5 rounded-lg"
+                  key={idx}
+                >
+                  <span>{item?.icon && React.createElement(item.icon)}</span>
+                  <p className="font-semibold">{item?.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="my-8 ">
+            <h2 className="font-semibold text-xl py-3">Near By Services</h2>
+            <div className="text-black flex flex-col gap-4">
+              {matchProducts?.services?.map((item, idx) => (
+                <div
+                  className="flex items-center bg-[#EBE8F3] px-3 gap-2 py-5 rounded-lg"
+                  key={idx}
+                >
+                  <span>{item?.icon && React.createElement(item.icon)}</span>
+                  <p className="font-semibold">{item?.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Button className="w-full h-14 cursor-pointer">Purchase Now!</Button>
         </div>
       </div>
     </div>
