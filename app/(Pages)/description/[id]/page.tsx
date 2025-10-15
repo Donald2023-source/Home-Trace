@@ -221,7 +221,9 @@ const Page = () => {
             </div>
           </div>
 
-          <Button className="w-full h-14 cursor-pointer">Purchase Now!</Button>
+          <Button className="w-full rounded-2xl h-14 cursor-pointer">
+            Purchase Now!
+          </Button>
         </div>
       </div>
     </div>
