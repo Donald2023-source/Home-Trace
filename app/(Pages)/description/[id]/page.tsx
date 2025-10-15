@@ -165,7 +165,7 @@ const Page = () => {
                 <p className="text-sm">Build Cost</p>
                 <PriceFormatter
                   className="md:text-2xl text-lg"
-                  amount={matchProducts?.buildCost ?? 0}
+                  amount={matchProducts?.buildCost ?? 0}  
                 />
               </span>
             </div>
@@ -223,8 +223,8 @@ const Page = () => {
 
           <div className="px-4 mb-10 w-full">
             <Button className="w-full rounded-2xl h-14 cursor-pointer">
-            Purchase Now!
-          </Button>
+              Purchase Now!
+            </Button>
           </div>
         </div>
       </div>
