@@ -103,7 +103,7 @@ const Page = () => {
             <div className="flex items-center gap-10">
               <p
                 onClick={() => setTab("Overview")}
-                className={`border-b cursor-pointer w-2/3 py-1 text-center font-semibold ${
+                className={`border-b cursor-pointer md:w-2/3 w-1/2 py-1 text-center font-semibold ${
                   tab === "Overview" && "border-b-2  border-[#2C1669]"
                 }`}
               >
@@ -120,10 +120,10 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="w-2/3 py-4 px-4">
+          <div className="md:w-2/3 border w-full border  py-4">
             {tab === "Overview" && (
-              <div>
-                <span className="flex items-center p w-[40%] justify-between">
+              <div className="w-[70%] px-3 flex flex-col gap-2">
+                <span className="flex items-center md:w-[40%] justify-between">
                   <h2 className="font-semibold">{matchProducts?.name}</h2>
                   <Image
                     src={img2}
@@ -132,12 +132,12 @@ const Page = () => {
                   />
                 </span>
 
-                <div className=" w-[35%] flex flex-col gap-4 my-2">
+                <div className=" md:w-[50%] flex flex-col gap-4 my-2">
                   <span className="flex items-center gap-2">
                     <MapPin />
                     <p>{matchProducts?.location}</p>
                   </span>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center  px-1  justify-between">
                     <span className="flex items-center gap-2">
                       <Bed />
                       <p className="text-black/50 text-sm">
@@ -156,24 +156,24 @@ const Page = () => {
             )}
           </div>
 
-          <div className="flex justify-between gap-4 md:px-4  md:py-4 w-full">
-            <div className="w-2/3">
-              <p className="py-2 text-black/50 w-[90%] leading-7">
+          <div className="flex justify-between md:flex-row flex-col gap-4 px-3  md:py-4 w-full">
+            <div className="md:w-2/3">
+              <p className="py-2 px-3 md:text-base text-sm text-black/50 md:w-[90%] leading-7">
                 {matchProducts?.desc}
               </p>
               <span className="flex h-fit flex-col rounded-xl w-2/3 gap-1 p-2 bg-[#EBE8F3]">
-                <p>Build Cost</p>
+                <p className="text-sm">Build Cost</p>
                 <PriceFormatter
-                  className="text-2xl"
+                  className="md:text-2xl text-lg"
                   amount={matchProducts?.buildCost ?? 0}
                 />
               </span>
             </div>
 
-            <div className="flex-1 mx-auto flex items-center justify-center">
-              <div className="w-[60%] flex flex-col gap-1 py-2 shadow rounded-xl items-center">
+            <div className="flex-1  w-full mx-auto flex items-center ">
+              <div className="py-3 w-full">
                 {matchProducts?.agent?.map((item, idx) => (
-                  <div className="flex flex-col gap-2 ">
+                  <div className="flex flex-col w-full p-5 md:w-72 items-center rounded shadow gap-2 ">
                     <Image src={item?.profileImg} alt="agent" />
                     <div className="flex items-center gap-2 py-1">
                       <h2 className="font-semibold">{item?.name}</h2>
@@ -192,9 +192,9 @@ const Page = () => {
             </div>
           </div>
 
-          <div>
+          <div className="px-3 ">
             <h2 className="font-semibold text-xl py-3">Amenities</h2>
-            <div className="text-black flex flex-col gap-4">
+            <div className="text-black flex text-sm md:text-base flex-col gap-4">
               {matchProducts?.amenities?.map((item, idx) => (
                 <div
                   className="flex items-center bg-[#EBE8F3] px-3 gap-2 py-5 rounded-lg"
@@ -206,12 +206,12 @@ const Page = () => {
               ))}
             </div>
           </div>
-          <div className="my-8 ">
+          <div className="my-8 px-4">
             <h2 className="font-semibold text-xl py-3">Near By Services</h2>
             <div className="text-black flex flex-col gap-4">
               {matchProducts?.services?.map((item, idx) => (
                 <div
-                  className="flex items-center bg-[#EBE8F3] px-3 gap-2 py-5 rounded-lg"
+                  className="flex text-sm md:text-base items-center bg-[#EBE8F3] px-3 gap-2 py-5 rounded-lg"
                   key={idx}
                 >
                   <span>{item?.icon && React.createElement(item.icon)}</span>
@@ -221,9 +221,11 @@ const Page = () => {
             </div>
           </div>
 
-          <Button className="w-full rounded-2xl h-14 cursor-pointer">
+          <div className="px-4 mb-10 w-full">
+            <Button className="w-full rounded-2xl h-14 cursor-pointer">
             Purchase Now!
           </Button>
+          </div>
         </div>
       </div>
     </div>
