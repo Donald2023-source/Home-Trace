@@ -1,12 +1,9 @@
 "use client";
+import { Products } from "@/app/data/Products";
 import { RootState } from "@/app/Redux/Store/store";
 import { Bookmark, Clock3, Eye, HousePlus, Menu, Search } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
-import img1 from "@/public/Frame 18762.png";
-import img2 from "@/public/Frame 18762 (2).png";
-import img3 from "@/public/Frame 18762 (1).png";
-import ProductCard from "@/app/Components/ProductCard";
 import DProductCard from "@/app/Components/DProductCard";
 
 const Page = () => {
@@ -41,29 +38,7 @@ const Page = () => {
     },
   ];
 
-  const Products = [
-    {
-      name: "4-Bedroom Duplex",
-      location: "Rayfield Resort Road, Plateau state",
-      price: 2500000,
-      img: img1,
-      soldOut: false,
-    },
-    {
-      name: "3-plot of Land",
-      location: "Gugurat Junction, Plateau state",
-      price: 320000000,
-      img: img2,
-      soldOut: false,
-    },
-    {
-      name: "Self Contain Apartment",
-      location: "Rayfield Resort Road, Plateau state",
-      price: 75000000,
-      img: img3,
-      soldOut: true,
-    },
-  ];
+ 
   const user = useSelector((state: RootState) => state.auth.user);
   const firstName = user?.fullName?.trim().split(" ")[0] || "";
   console.log(user);
