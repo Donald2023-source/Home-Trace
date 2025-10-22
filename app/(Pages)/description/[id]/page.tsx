@@ -120,7 +120,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="md:w-2/3 border w-full border  py-4">
+          <div className="md:w-2/3 w-full px-3  py-4">
             {tab === "Overview" && (
               <div className="w-[70%] px-3 flex flex-col gap-2">
                 <span className="flex items-center md:w-[40%] justify-between">
@@ -161,10 +161,10 @@ const Page = () => {
               <p className="py-2 px-3 md:text-base text-sm text-black/50 md:w-[90%] leading-7">
                 {matchProducts?.desc}
               </p>
-              <span className="flex h-fit flex-col rounded-xl w-2/3 gap-1 p-2 bg-[#EBE8F3]">
+              <span className="flex h-fit flex-col ml-3 mt-1 rounded-xl w-2/3 gap-1 p-2 bg-[#EBE8F3]">
                 <p className="text-sm">Build Cost</p>
                 <PriceFormatter
-                  className="md:text-2xl text-lg"
+                  className="md:text-xl text-lg"
                   amount={matchProducts?.buildCost ?? 0}  
                 />
               </span>

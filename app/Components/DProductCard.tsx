@@ -5,6 +5,7 @@ import { Bookmark, CreditCard, MapPin } from "lucide-react";
 import verify from "@/public/material-symbols_verified.png";
 import PriceFormatter from "./PriceFormatter";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { toast } from "sonner";
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
     location: string;
     price: number;
     soldOut: boolean;
+    id: string;
   }>;
 }
 
@@ -62,13 +64,15 @@ const DProductCard = ({ item }: Props) => {
               <MapPin className="h-4 w-4" />
               <p>{item?.location}</p>
             </div>
-            <Button
-              className={`w-full text-[#2C1669] hover:text-white cursor-pointer bg-[#E1DDEC] ${
-                item?.soldOut && "bg-[#D5D5D5] hover:bg-transparent"
-              }`}
-            >
-              View Details
-            </Button>
+            <Link href={`/description/${item?.id}`}>
+              <Button
+                className={`w-full text-[#2C1669] hover:text-white cursor-pointer bg-[#E1DDEC] ${
+                  item?.soldOut && "bg-[#D5D5D5] hover:bg-transparent"
+                }`}
+              >
+                View Details
+              </Button>
+            </Link>
           </div>
         </div>
       ))}

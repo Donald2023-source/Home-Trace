@@ -12,14 +12,14 @@ const Page = () => {
       name: "Property viewed",
       icon: <Eye size={20} color="white" />,
       number: 200,
-      desc: "Recently viewed properties",
+      desc: "Recently viewed ",
       color: "#2C1669",
     },
     {
       name: "Saved Properties",
       icon: <Bookmark size={20} color="white" />,
       number: 10,
-      desc: "Recently saved properties",
+      desc: "Recently saved ",
       color: "#1D2F82",
     },
     {
@@ -44,7 +44,7 @@ const Page = () => {
   console.log(user);
   return (
     <div>
-      <div className="md:px-4 md:py-4 w-full">
+      <div className="md:px-4 px-2 md:py-4 w-full">
         <h2 className="text-2xl font-bold tracking-tight">
           Welcome back, {firstName}!
         </h2>
@@ -80,7 +80,7 @@ const Page = () => {
             <div className="flex flex-col w-full">
               <p className="font-medium">{item?.name}</p>
               <p className="text-xl font-bold">{item?.number}</p>
-              <p className="text-xs">{item?.desc}</p>
+              <p className="md:text-sm text-[11px]">{item?.desc}</p>
             </div>
             <span
               className="p-2 md:h-10 h-7  flex items-center justify-center w-7 md:w-10 rounded-md"
@@ -93,7 +93,7 @@ const Page = () => {
       </div>
 
       <div className="my-3">
-        <div className="flex items-center justify-between md:w-full  w-[90%] px-4 mx-auto md:px-6">
+        <div className="flex items-center justify-between md:w-full mx-auto md:px-6">
           <h2 className="text-2xl font-bold">New Listings</h2>
           <p className="text-[#321876] cursor-pointer font-semibold underline tracking-tight">
             View all
@@ -102,7 +102,7 @@ const Page = () => {
         <DProductCard item={Products} />
       </div>
       <div className="mt-10">
-        <div className="flex items-center justify-between md:w-full w-[90%] px-4 mx-auto md:px-6">
+        <div className="flex items-center justify-between md:w-full  mx-auto md:px-6">
           <h2 className="text-2xl font-bold">Saved Properties</h2>
           <p className="text-[#321876] cursor-pointer font-semibold underline tracking-tight">
             View all
