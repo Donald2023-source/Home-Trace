@@ -5,8 +5,15 @@ import { Bookmark, Clock3, Eye, HousePlus, Menu, Search } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
 import DProductCard from "@/app/Components/DProductCard";
+import { toast } from "sonner";
 
-const Page = () => {
+const Page = ({
+  setIsVisible,
+  isVisible,
+}: {
+  setIsVisible: (value: boolean) => void;
+  isVisible: boolean;
+}) => {
   const cardItems = [
     {
       name: "Property viewed",
@@ -38,7 +45,6 @@ const Page = () => {
     },
   ];
 
- 
   const user = useSelector((state: RootState) => state.auth.user);
   const firstName = user?.fullName?.trim().split(" ")[0] || "";
   console.log(user);
@@ -68,8 +74,10 @@ const Page = () => {
             color="white"
           />
         </fieldset>
-
-        <Menu />
+        <Menu
+          className="cursor-pointer"
+          onClick={() => setIsVisible(!isVisible)}
+        />
       </div>
       <div className="grid md:grid-cols-4 gap-4 grid-cols-2 place-content-center place-items-center">
         {cardItems.map((item, idx) => (

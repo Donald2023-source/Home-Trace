@@ -26,6 +26,7 @@ const Dashboardheader = () => {
         <Image className="" src={User} alt="profile" />
         <h4 className="font-medium tracking-tight">{user?.user?.fullName}</h4>
         <ChevronDown />
+    
       </div>
     </div>
   );
